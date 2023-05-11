@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Rol, Usuario, Cliente, Administrador, Trabajador, TipoPedido, Estado, Pedido, PedidoTrabajador
 
 admin.site.register(Rol)
-admin.site.register(Usuario)
+#admin.site.register(Usuario)
 admin.site.register(Cliente)
 admin.site.register(Administrador)
 admin.site.register(Trabajador)
