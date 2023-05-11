@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'Cognitive_Crusaders_Ent.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Cliente_Usuario',
+        'USER': 'postgres',
+        'PASSWORD': 'Doraimon2001',
+        'HOST': 'localhost',
+        'PORT': '5432'
     }
 }
 

@@ -22,6 +22,8 @@ class Administrador(Usuario):
 
 class Trabajador(Usuario):
     Sueldo = models.FloatField()
+    Fecha_Ingreso = models.DateField(null=True)
+    Especialidad = models.CharField(max_length=50, null=True)
     fk_Administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
 
 class TipoPedido(models.Model):
@@ -40,6 +42,7 @@ class Pedido(models.Model):
     Plazo_fin = models.DateField()
     Presupuesto = models.FloatField()
     Info_adicional = models.CharField(max_length=50)
+    Status = models.CharField(max_length=50, null=True)
     fk_Estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     fk_Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fk_TipoPedido = models.ForeignKey(TipoPedido, on_delete=models.CASCADE)
@@ -47,5 +50,6 @@ class Pedido(models.Model):
 
 class PedidoTrabajador(models.Model):
     id_pedidoTrabajador = models.BigAutoField(primary_key=True, serialize=True, verbose_name='ID')
+    Fecha_Aceptado = models.DateField(null=True)
     fk_Pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     fk_Trabajador = models.ForeignKey(Trabajador, on_delete=models.CASCADE)
