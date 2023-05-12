@@ -45,10 +45,6 @@ class TipoPedido(models.Model):
     descripcion = models.CharField(max_length=100)
 
 
-class Estado(models.Model):
-    id_estado = models.BigAutoField(primary_key=True, serialize=True, verbose_name="ID")
-    nombre = models.CharField(max_length=50)
-    descripcion = models.CharField(max_length=100)
 
 class Status(models.Model):
     id_status = models.BigAutoField(primary_key=True, serialize=True, verbose_name="ID")
@@ -57,13 +53,12 @@ class Status(models.Model):
 
 class Pedido(models.Model):
     id_pedido = models.BigAutoField(primary_key=True, serialize=True, verbose_name="ID")
-    Alcance = models.CharField(max_length=50)
+    Alcance = models.CharField(max_length=200)
     Plazo_inicio = models.DateField()
     Plazo_fin = models.DateField()
     Presupuesto = models.FloatField()
     Info_adicional = models.CharField(max_length=50)
     fk_Status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
-    fk_Estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
     fk_Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     fk_TipoPedido = models.ForeignKey(TipoPedido, on_delete=models.CASCADE)
 

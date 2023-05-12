@@ -28,7 +28,7 @@ join public."Cliente_Usuario_usuario" as usuario on administrador.usuario_ptr_id
 join public."Cliente_Usuario_usuario" as usuario2 ON usuario2.id_usuario = trabajador.usuario_ptr_id
 where usuario.id_usuario = trabajador."fk_Administrador_id"
 
-select * from public."Cliente_Usuario_"
+select * from public."Cliente_Usuario_rol"
 
 
 
