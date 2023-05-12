@@ -1,4 +1,5 @@
-# hola.... MUNDO =P
+# Proyecto final de la materia de Diseño de Aplicaciones Web.
+# Intrucciones para ejecutar el proyecto
 
 1.- Hacer pull del proyecto en su maquina local.
 
