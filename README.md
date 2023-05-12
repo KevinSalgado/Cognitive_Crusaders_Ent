@@ -1,7 +1,7 @@
 # hola.... MUNDO =P
 
-Van bien con el avance ^.^, agrega también a Carlos como colaborador del proyecto, ya que imagino es tu repositorio el que utilizaran.
+1.- Hacer pull del proyecto en su maquina local.
 
-Saludos
+2.- Crear una base de datos en PostgreSQL con el nombre de "Cliente_Usuario".
 
-Profª. Yuliana Berumen.
+3.- En su consola de comandos, dirigirse a la carpeta del proyecto y ejecutar el comando "py manage.py makemigrations" y después "py manage.py migrate".
