@@ -1,7 +1,7 @@
 # Proyecto final de la materia de Diseño de Aplicaciones Web.
 # Intrucciones para ejecutar el proyecto
 
-1.- Hacer pull del proyecto en su maquina local.
+1.- Clonar el proyecto en tu maquina local.
 
 2.- Crear una base de datos en PostgreSQL con el nombre de "Cliente_Usuario".
 
