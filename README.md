@@ -15,6 +15,8 @@ y ejecute los siguientes comandos:
 ```
 psql -U username
 
+Password for user username: (ingresa tu contraseña)
+
 username=# CREATE DATABASE "Cliente_Usuario";
 ```
 
