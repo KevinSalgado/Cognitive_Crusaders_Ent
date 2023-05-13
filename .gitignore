@@ -1,0 +1,6 @@
+### VSCode
+.vscode
+
+### Compiled Python
+__pycache__
+*.pyc
