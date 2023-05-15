@@ -28,3 +28,7 @@ python inserciones_sql.py
 ```bash
 python3 inserciones_sql.py
 ```
+
+## **Consideraciones**
+Solo tienen que cambiar la coma de la última fila por un punto y coma.
+Cualquier bug que encuentren me dicen y lo reparo.
