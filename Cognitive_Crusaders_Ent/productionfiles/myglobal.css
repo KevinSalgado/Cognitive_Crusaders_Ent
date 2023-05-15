@@ -1,3 +1,24 @@
 body {
-    color: violet;
+    margin:0;
+    font: 600 18px 'Source Sans Pro', sans-serif;
+    letter-spacing: 0.64px;
+    color: #585d74;
+  }
+
+  .topnav {
+    background-color:#375BDC;
+    color:#ffffff;
+    padding:10px;
+  }
+  .topnav a:link, .topnav a:visited {
+    text-decoration: none;
+    color: #ffffff; 
+  }
+  .topnav a:hover, .topnav a:active {
+    text-decoration: underline;
+  }
+
+  .main, .main h1 {
+    text-align:center;
+    color:#375BDC;
   }

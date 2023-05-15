@@ -1,10 +1,14 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<body>
-<link rel="stylesheet" href="{% static 'mystyles.css' %}">
-<h1>Hola a todos</h1>
-<p>Bienvenidos a Cognitive Crusaders Enterprise</p>
+{% extends "master.html" %}
 
-</body>
-</html>
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+    
+    <div class="main">
+
+        <h1>Inicio</h1>
+        <p>Welcome to our website!</p>
+        <p>Here you can find out more about our company and our products.</p>
+
+    </div>
+{% endblock %}

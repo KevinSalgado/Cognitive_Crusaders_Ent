@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+    <title>{% block title %}{% endblock %}</title> 
+</head>
+
+<body>
+
+    <div class="topnav">
+        <a href="/">Inicio</a> |
+        {% comment %} <a href="/members">MEMBERS</a> {% endcomment %}
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+
+</html>
