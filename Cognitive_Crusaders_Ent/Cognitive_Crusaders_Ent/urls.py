@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include("Cliente_Usuario.urls")),
     path('libreria/', include ('libreria.urls')),
     path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls'))
 ]
