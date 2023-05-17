@@ -9,7 +9,14 @@
         <h1>Inicio</h1>
         <p>Welcome to our website!</p>
         <p>Here you can find out more about our company and our products.</p>
-        <a href="{% url 'Salir' %}">Cerrar sesión</a>
 
+        
     </div>
+
+    {% if request.user.is_authenticated %}
+            <p>Bienvenido {{ request.user.username }}!</p>
+            <a href="{% url 'Salir' %}">Cerrar sesión</a>
+    {% else %}
+            <p>Por favor <a href="{% url 'login' %}">Inicie sesión</a> para ver el contenido.</p>
+    {% endif %}
 {% endblock %}
