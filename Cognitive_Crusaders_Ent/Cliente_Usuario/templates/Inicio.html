@@ -13,10 +13,5 @@
         
     </div>
 
-    {% if request.user.is_authenticated %}
-            <p>Bienvenido {{ request.user.username }}!</p>
-            <a href="{% url 'Salir' %}">Cerrar sesión</a>
-    {% else %}
-            <p>Por favor <a href="{% url 'login' %}">Inicie sesión</a> para ver el contenido.</p>
-    {% endif %}
+    
 {% endblock %}
