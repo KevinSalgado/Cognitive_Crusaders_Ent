@@ -37,3 +37,6 @@ def Register(Request):
             login(Request, user)
             return render(Request, 'Inicio.html', {'request': Request})
     return render(Request, 'registration/register.html', data)
+
+def Login(Request):
+    return render(Request, 'registration/login.html', {'request': Request})

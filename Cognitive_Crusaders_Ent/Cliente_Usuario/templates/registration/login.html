@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load crispy_forms_tags %}
+{% load static %}
 <head>
+    <link rel="stylesheet" href="{% static 'myglobal.css' %}">
     <title>Inicio de sesión</title>
 </head>
 <body>
+
+    <div class="topnav">
+        <a href="/">INICIO</a>
+        <a href="/servicios">SERVICIOS</a>
+        <a href="/register">REGISTRARSE</a>
+        <a href="/accounts/login/">INICIAR SESIÓN</a>
+    </div>
+
     <h1>Hola pon tu cuenta</h1>
     <form method="post">
         {% csrf_token %}
 
         {{ form | crispy }}
-        {% comment %} <label for="username">Usuario</label>
-        <input type="text" name="username" id="username" required>
-        <br>
-        <label for="password">Contraseña</label>
-        <input type="password" name="password" id="password" required>
-        <br>{% endcomment %}
+        
         <button type="submit" value="submit">Inciar sesion</button> 
         {% comment %} <input type="submit" value="Iniciar sesión"> {% endcomment %}
     </form>
