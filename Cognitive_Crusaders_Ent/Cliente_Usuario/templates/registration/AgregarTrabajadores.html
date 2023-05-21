@@ -1,0 +1,30 @@
+{% extends "master.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Agregar trabajadores interfaz para administradores{% endblock %}
+
+{% block content %}
+    
+    <div class="main">
+
+        <h1>Hola Administrador</h1>
+        <p>Agrega a tus trabajadores desde aqui</p>
+        
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form | crispy }}
+
+        <input type="text" name="Sueldo" placeholder="Sueldo"/>
+        <br>
+        <input type="text" name="Especialidad" placeholder="Especialidad"/>
+        
+
+        
+        <button type="submit" value="submit">Inciar sesion</button> 
+        
+    </form>
+    
+{% endblock %}

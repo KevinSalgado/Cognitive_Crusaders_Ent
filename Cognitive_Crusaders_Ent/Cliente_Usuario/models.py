@@ -36,7 +36,7 @@ class Trabajador(Usuario):
     Sueldo = models.FloatField()
     Fecha_Ingreso = models.DateField(null=True)
     Especialidad = models.CharField(max_length=150, null=True)
-    fk_Administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
+    fk_Administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE, null=True)
 
 
 class TipoPedido(models.Model):

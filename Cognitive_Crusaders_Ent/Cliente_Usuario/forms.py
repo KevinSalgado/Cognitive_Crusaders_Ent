@@ -6,3 +6,10 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email','first_name','last_name','email','password1', 'password2']
+
+class CustomUserCreationFormExtendedTrabajador(UserCreationForm):
+    sueldo = forms.FloatField()
+    especialidad = forms.CharField(max_length=150)
+
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ('sueldo', 'especialidad')
