@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
@@ -48,5 +48,9 @@ def Register(Request):
 
 def Login(Request):
     return render(Request, 'registration/login.html', {'request': Request})
+
+@user_passes_test(lambda user: user.is_superuser)
+def AgregarTrabajadores(Request):
+    return render(Request, 'AgregarTrabajadores.html', {'request': Request})
 
 
