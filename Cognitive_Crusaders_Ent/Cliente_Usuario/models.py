@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.models import Group, Permission, AbstractUser
 
 
 class Rol(models.Model):
@@ -12,12 +12,13 @@ class Usuario(models.Model):
     id_usuario = models.BigAutoField(
         primary_key=True, serialize=True, verbose_name="ID"
     )
-    nombre = models.CharField(max_length=150)
-    apellido = models.CharField(max_length=150)
-    telefono = models.CharField(max_length=50)
-    correo = models.CharField(max_length=150)
-    contrasena = models.CharField(max_length=150)
-    fk_Rol = models.ForeignKey(Rol, on_delete=models.CASCADE)
+    nombre = models.CharField(max_length=150, null=True)
+    apellido = models.CharField(max_length=150, null=True)
+    telefono = models.CharField(max_length=50,  null=True)
+    correo = models.CharField(max_length=150, null=True)
+    contrasena = models.CharField(max_length=150, null=True)
+    fk_Rol = models.ForeignKey(Rol, on_delete=models.CASCADE, null=True)
+    username = models.CharField(max_length=150, unique=True, null=True)
 
     class Meta:
         abstract = True
@@ -60,7 +61,7 @@ class Pedido(models.Model):
     Presupuesto = models.FloatField()
     Info_adicional = models.CharField(max_length=50)
     fk_Status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
-    fk_Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    fk_Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     fk_TipoPedido = models.ForeignKey(TipoPedido, on_delete=models.CASCADE)
 
 
@@ -70,7 +71,13 @@ class PedidoTrabajador(models.Model):
     )
     Fecha_Aceptado = models.DateField(null=True)
     fk_Pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-    fk_Trabajador = models.ForeignKey(Trabajador, on_delete=models.CASCADE)
+    fk_Trabajador = models.ForeignKey(Trabajador, on_delete=models.CASCADE, null=True)
+
+# class CustomUser(AbstractUser):
+#     phone = models.CharField(max_length=50)
+
+#     def __str__(self):
+#         return self.username
 
 # Creacion de grupos y permisos
 # Creacion de los grupos
@@ -79,8 +86,8 @@ group_trabajadores, _ = Group.objects.get_or_create(name='Trabajadores')
 group_administradores, _ = Group.objects.get_or_create(name='Administradores')
 
 # # Creacion de los permisos
-# permiso_ver_pedidos_clientes = Permission.objects.get(codename='ver_pedidos_clientes')
-# permiso_ver_pedidos_trabajadores = Permission.objects.get(codename='ver_pedidos_trabajadores')
+#permiso_ver_pedidos_clientes = Permission.objects.get(codename='ver_pedidos_clientes')
+#permiso_ver_pedidos_trabajadores = Permission.objects.get(codename='ver_pedidos_trabajadores')
 
 # # Asignacion de permisos a los grupos
 # group_clientes.permissions.add(permiso_ver_pedidos_clientes)

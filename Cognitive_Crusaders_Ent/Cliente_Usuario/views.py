@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
+from .models import Cliente
 
 def Inicio(Request):
     return render(Request, 'Inicio.html', {'request': Request})
@@ -32,7 +33,14 @@ def Register(Request):
         user_creation_form = CustomUserCreationForm(data=Request.POST)
 
         if user_creation_form.is_valid():
-            user_creation_form.save()
+            user = user_creation_form.save()
+            cliente = Cliente(
+                username = user.username,
+                nombre=user.first_name,
+                apellido=user.last_name,
+                correo=user.email,
+            )
+            cliente.save()
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(Request, user)
             return render(Request, 'Inicio.html', {'request': Request})

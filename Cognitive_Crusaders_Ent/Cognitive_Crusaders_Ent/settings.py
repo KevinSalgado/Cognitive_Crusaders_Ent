@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Cliente_Usuario',
+    'Cliente_Usuario.apps.ClienteUsuarioConfig',
     'libreria'
 ]
 
@@ -148,4 +148,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # VARIABLES DE REDIRECCION DE LOGIN Y LOGOUT
 LOGIN_REDIRECT_URL = 'Inicio'
 LOGOUT_REDIRECT_URL = 'Inicio'
+
+# VARIABLES DE AUTENTICACION DE USUARIOS
+#AUTH_USER_MODEL = 'Cliente_Usuario.CustomUser'
+
 

@@ -9,5 +9,5 @@ def add_user_to_clientes_group(sender, instance, created, **kwargs):
             clientes = Group.objects.get(name='Clientes')
         except Group.DoesNotExist:
             clientes = Group.objects.create(name='Clientes')
-        instance.user.groups.add(clientes)
+        instance.groups.add(clientes)
         #instance.groups.add(Group.objects.get(name='Clientes'))
