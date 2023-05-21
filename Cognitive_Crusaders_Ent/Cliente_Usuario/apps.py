@@ -6,5 +6,5 @@ class ClienteUsuarioConfig(AppConfig):
     name = 'Cliente_Usuario'
     verbose_name = 'Cliente_Usuario'
 
-    def ready(self):
-        import Cliente_Usuario.signals
+    # def ready(self):
+    #     import Cliente_Usuario.signals
