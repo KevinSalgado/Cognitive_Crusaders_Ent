@@ -30,3 +30,11 @@ footer {
 body {
     margin: 0px 0px;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
