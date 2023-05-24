@@ -105,3 +105,5 @@ def AgregarTrabajadores(Request):
     return render(Request, 'registration/AgregarTrabajadores.html', data)
 
 
+def index(Request):
+    return render(Request, 'index.html')
