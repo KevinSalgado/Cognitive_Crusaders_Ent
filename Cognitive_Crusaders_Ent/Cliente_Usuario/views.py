@@ -59,7 +59,7 @@ def Register(Request):
     return render(Request, 'registration/register.html', data)
 
 def Login(Request):
-    return render(Request, 'registration/login.html', {'request': Request})
+    return render(Request, 'registration/new_login.html', {'request': Request})
 
 
 @user_passes_test(lambda user: user.is_superuser)
