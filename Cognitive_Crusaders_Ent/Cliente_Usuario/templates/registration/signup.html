@@ -5,20 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- CSS -->
+    <title>Regístrate</title>
     <link rel="stylesheet" href="{% static 'css/new_login.css' %}">
     <link rel="shortcut icon" href="{% static 'favicon/cognitive_crusaders_logo.svg' %}" type="image/x-icon">
-
     <!-- Boxicons CSS -->
     <!-- <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> -->
-    <title>Login</title>
 </head>
 <body>
     <section class="container forms">
-        <div class="form login">
+        <div class="form signup">
             <div class="form-content">
-                <header>¡Inicia sesión ahora!</header>
+                <header>¡Regístrate ahora!</header>
 
                 <form action="#">
                     <!-- Email input -->
@@ -30,20 +27,21 @@
                         <input type="password" placeholder="Contraseña" class="password"> 
                         <!-- <i class="bx bx-hide eye-icon"></i> -->
                     </div>
-                    <!-- Forgot password -->
-                    <div class="form-link">
-                        <a href="#" class="forgot-pass">¿Olvidaste tu contraseña?</a>
+                    <!-- Confirm Password -->
+                    <div class="field input-field">
+                        <input type="password" placeholder="Confirmar contraseña" class="password"> 
+                        <!-- <i class="bx bx-hide eye-icon"></i> -->
                     </div>
                     <!-- Submit button -->
                     <div class="field button-field">
-                        <button type="submit">Iniciar sesión</button>
+                        <button type="submit">¡Regístrate!</button>
                     </div>
                     
                 </form>
 
                 <!-- Already have an account? -->
                 <div class="form-link">
-                    <span>¿Aún no tienes cuenta? <a href="{% url 'signup' %}" class="signup-link">Regístrate</a></span>
+                    <span>¿Ya tienes cuenta? <a href="{% url 'login' %}" class="signup-link">Inicia sesión</a></span>
                 </div>
             </div>
             
@@ -64,7 +62,6 @@
                 </a>
             </div> -->
         </div>
-
     </section>
 </body>
 </html>
