@@ -99,6 +99,19 @@ button {
     border-bottom-right-radius: 8px;
 }
 
+a {
+    padding: 1px 6px;
+}
+
+.home:hover {
+    background-color: #CACACA;
+}
+
+
+.home span:hover {
+    color: #fff;
+}
+
 .vectors-wrapper {
     display: flex;
     width: 20px;
