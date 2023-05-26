@@ -53,19 +53,19 @@
                     </div>
                     <span class="paragraph-m-medium">Blog</span>
                 </button>
-                <button type="button" class="home">
+                <a href="#footer" class="home">
                     <div class="vectors-wrapper">
                         <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
                     <span class="paragraph-m-medium">Contacto</span>
-                </button>
+                </a>
 
-                <button type="button" class="start-now">
+                <a href="{% url 'signup' %}" class="start-now">
                     <span class="paragraph-s-semi-bold">Comenzar</span>
                     <div class="vectors-wrapper">
                         <img src="{% static 'images/vectors-wrapper-light.svg' %}" alt="">
                     </div>
-                </button>
+                </a>
             </div>
         </div>
     </header>
@@ -320,7 +320,7 @@
 
     <!-- footer_section.css -->
     <footer>
-        <div class="section-7">
+        <div id="footer" class="section-7">
             <div class="container-9">
 
                 <div class="content-4">
