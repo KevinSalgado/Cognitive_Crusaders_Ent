@@ -107,3 +107,6 @@ def AgregarTrabajadores(Request):
 
 def index(Request):
     return render(Request, 'index.html')
+
+def sing_up(Request):
+    return render(Request, 'registration/signup.html')
