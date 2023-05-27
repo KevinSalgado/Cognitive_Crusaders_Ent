@@ -59,7 +59,7 @@ def Register(Request):
     return render(Request, 'registration/register.html', data)
 
 def Login(Request):
-    return render(Request, 'registration/login.html', {'request': Request})
+    return render(Request, 'registration/new_login.html', {'request': Request})
 
 
 @user_passes_test(lambda user: user.is_superuser)
@@ -105,3 +105,8 @@ def AgregarTrabajadores(Request):
     return render(Request, 'registration/AgregarTrabajadores.html', data)
 
 
+def index(Request):
+    return render(Request, 'index.html')
+
+def sing_up(Request):
+    return render(Request, 'registration/signup.html')
