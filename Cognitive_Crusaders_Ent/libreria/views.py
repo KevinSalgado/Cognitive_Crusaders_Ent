@@ -16,6 +16,8 @@ def get_chart(request):
     fecha_inicio = request.GET.get('fecha_inicio')
     fecha_fin = request.GET.get('fecha_fin')
 
+    print("Hola")
+
     data = Caudal.objects.filter(INF_Label=label, RowKey__date__range=[fecha_inicio, fecha_fin]).values('RowKey', 'INF_Value').order_by('RowKey')
 
     print(request.GET.get('fecha_inicio'))
