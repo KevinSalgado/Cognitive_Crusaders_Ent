@@ -61,6 +61,18 @@ def Register(Request):
     return render(Request, 'registration/register.html')
 
 def Login(Request):
+    if Request.method == 'POST':
+        username = Request.POST['username']
+        password = Request.POST['password']
+        user = authenticate(Request, username=username, password=password)
+        return render(Request, 'index.html', {'request': Request})
+        # if user is not None:
+        #     login(Request, user)
+        #     return render(Request, 'index.html', {'request': Request})
+        # else:
+        #     print("Usuario o contraseña incorrectos")
+        #     return render(Request, 'registration/login.html', {'request': Request})
+            
     return render(Request, 'registration/login.html', {'request': Request})
 
 
