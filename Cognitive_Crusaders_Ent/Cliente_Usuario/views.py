@@ -9,20 +9,22 @@ from .models import Administrador, Cliente, Trabajador
 from django.contrib.auth.models import Group, User
 from django.utils import timezone
 
-def Inicio(Request):
-    return render(Request, 'Inicio.html', {'request': Request})
-    # template = loader.get_template("Inicio.html")
-    # return HttpResponse(template.render())
+# ANTIGUO INICIO
+# def Inicio(Request):
+#     return render(Request, 'Inicio.html', {'request': Request})
+#     # template = loader.get_template("Inicio.html")
+#     # return HttpResponse(template.render())
 
-@login_required()
-def Servicios(Request):
-    # template = loader.get_template("servicios.html")
-    # return HttpResponse(template.render())
-    return render(Request, 'servicios.html', {'request': Request})
+#ANTIGUO SERVICIOS
+# @login_required()
+# def Servicios(Request):
+#     # template = loader.get_template("servicios.html")
+#     # return HttpResponse(template.render())
+#     return render(Request, 'servicios.html', {'request': Request})
 
 def Salir(Request):
     logout(Request)
-    template = loader.get_template("Inicio.html")
+    template = loader.get_template("index.html")
     return HttpResponse(template.render()) 
 
 def Register(Request):
@@ -55,11 +57,11 @@ def Register(Request):
             # Autenticamos y logeamos al usuario
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(Request, user)
-            return render(Request, 'Inicio.html', {'request': Request})
-    return render(Request, 'registration/register.html', data)
+            return render(Request, 'index.html', {'request': Request})
+    return render(Request, 'registration/register.html')
 
 def Login(Request):
-    return render(Request, 'registration/new_login.html', {'request': Request})
+    return render(Request, 'registration/login.html', {'request': Request})
 
 
 @user_passes_test(lambda user: user.is_superuser)
@@ -94,7 +96,7 @@ def AgregarTrabajadores(Request):
             # Autenticamos y logeamos al usuario
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             #login(Request, user)
-            return render(Request, 'Inicio.html', {'request': Request})
+            return render(Request, 'index.html', {'request': Request})
     else:
         user_creation_form = CustomUserCreationFormExtendedTrabajador()
         
@@ -108,5 +110,5 @@ def AgregarTrabajadores(Request):
 def index(Request):
     return render(Request, 'index.html')
 
-def sing_up(Request):
-    return render(Request, 'registration/signup.html')
+# def sing_up(Request):
+#     return render(Request, 'registration/signup.html')

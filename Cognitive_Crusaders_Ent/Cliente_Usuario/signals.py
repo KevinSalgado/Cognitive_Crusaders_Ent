@@ -2,6 +2,7 @@ from django.contrib.auth.models import Group, User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
+# FUNCION QUE YA NO ES NECESARIA
 # @receiver(post_save, sender=User)
 # def add_user_to_clientes_group(sender, instance, created, **kwargs):
 #     if created:

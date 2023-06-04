@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load crispy_forms_tags %}
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'myglobal.css' %}">
+    <title>Inicio de sesión</title>
+</head>
+<body>
+
+    <div class="topnav">
+        <a href="/">INICIO</a>
+        <a href="/servicios">SERVICIOS</a>
+        <a href="/register">REGISTRARSE</a>
+        <a href="/accounts/login/">INICIAR SESIÓN</a>
+        <a href="/AgregarTrabajadores">AGREGAR TRABAJADORES</a>
+    </div>
+
+    <h1>No tienes permisos para acceder, por favor primero inicia sesión con una cuenta con permisos válidos</h1>
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form | crispy }}
+        
+        <button type="submit" value="submit">Inciar sesion</button> 
+        {% comment %} <input type="submit" value="Iniciar sesión"> {% endcomment %}
+    </form>
+</body>
+</html>
