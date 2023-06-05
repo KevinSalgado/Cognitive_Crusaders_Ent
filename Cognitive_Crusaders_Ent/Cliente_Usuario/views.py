@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
@@ -58,22 +58,21 @@ def Register(Request):
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(Request, user)
             return render(Request, 'index.html', {'request': Request})
-    return render(Request, 'registration/register.html')
+    return render(Request, 'registration/register.html', data)
 
-def Login(Request):
-    if Request.method == 'POST':
-        username = Request.POST['username']
-        password = Request.POST['password']
-        user = authenticate(Request, username=username, password=password)
-        return render(Request, 'index.html', {'request': Request})
-        # if user is not None:
-        #     login(Request, user)
-        #     return render(Request, 'index.html', {'request': Request})
-        # else:
-        #     print("Usuario o contraseña incorrectos")
-        #     return render(Request, 'registration/login.html', {'request': Request})
+def Login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            print("Usuario o contraseña incorrectos")
+            return render(request, 'registration/login.html', {'request': request})
             
-    return render(Request, 'registration/login.html', {'request': Request})
+    return render(request, 'registration/login.html', {'request': request})
 
 
 @user_passes_test(lambda user: user.is_superuser)
@@ -118,9 +117,8 @@ def AgregarTrabajadores(Request):
 
     return render(Request, 'registration/AgregarTrabajadores.html', data)
 
-
 def index(Request):
-    return render(Request, 'index.html')
+    return render(Request, 'index.html', {'request': Request})
 
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
