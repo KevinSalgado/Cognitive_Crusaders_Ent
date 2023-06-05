@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Cliente_Usuario.apps.ClienteUsuarioConfig',
-    'libreria'
+    'libreria.apps.LibreriaConfig'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
