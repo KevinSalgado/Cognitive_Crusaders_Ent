@@ -206,3 +206,10 @@ a.google span {
     }
     
 }
+
+.form-separator {
+    height: 10px;
+    background-color: #ccc;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }

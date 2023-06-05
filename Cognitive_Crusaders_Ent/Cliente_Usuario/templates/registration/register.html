@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,31 +17,26 @@
             <div class="form-content">
                 <header>¡Regístrate ahora!</header>
 
-                <form action="#">
+
+                <form method="post" action="{% url 'Register' %}">
+                    {% csrf_token %}
                     <!-- Email input -->
-                    <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input"> 
-                    </div>
-                    <!-- Password input -->
-                    <div class="field input-field">
-                        <input type="password" placeholder="Contraseña" class="password"> 
-                        <!-- <i class="bx bx-hide eye-icon"></i> -->
-                    </div>
-                    <!-- Confirm Password -->
-                    <div class="field input-field">
-                        <input type="password" placeholder="Confirmar contraseña" class="password"> 
-                        <!-- <i class="bx bx-hide eye-icon"></i> -->
-                    </div>
+                    {% for field in form %}
+                        <div class="field input-field">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
                     <!-- Submit button -->
                     <div class="field button-field">
                         <button type="submit">¡Regístrate!</button>
                     </div>
                     
-                </form>
+                </form> 
 
                 <!-- Already have an account? -->
                 <div class="form-link">
-                    <span>¿Ya tienes cuenta? <a href="{% url 'login' %}" class="signup-link">Inicia sesión</a></span>
+                    <span>¿Ya tienes cuenta? <a href="/accounts/login/" class="signup-link">Inicia sesión</a></span>
                 </div>
             </div>
             
@@ -64,4 +59,4 @@
         </div>
     </section>
 </body>
-</html>
+</html> 

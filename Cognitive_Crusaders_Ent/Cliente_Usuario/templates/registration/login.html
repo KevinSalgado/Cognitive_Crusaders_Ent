@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,24 +20,26 @@
             <div class="form-content">
                 <header>¡Inicia sesión ahora!</header>
 
-                <form action="#">
+                <form method="post" action="{% url 'login' %}">
                     {% csrf_token %}
-                    <!-- Email input -->
+                    <!-- Username input -->
                     <div class="field input-field">
-                        <input type="username" placeholder="username" class="input"> 
+                        <label for="{{ form.username.id_for_label }}">Username</label>
+                        {{ form.username }}
                     </div>
                     <!-- Password input -->
                     <div class="field input-field">
-                        <input type="password" placeholder="password" class="password"> 
-                        <!-- <i class="bx bx-hide eye-icon"></i> -->
+                        <label for="{{ form.password.id_for_label }}">Password</label>
+                        {{ form.password }}
+                    </div>
+                    <div class="form-separator"></div>
+                    <!-- Submit button -->
+                    <div class="field button-field">
+                        <button type="submit" value="submit">Iniciar sesion</button> 
                     </div>
                     <!-- Forgot password -->
                     <div class="form-link">
                         <a href="#" class="forgot-pass">¿Olvidaste tu contraseña?</a>
-                    </div>
-                    <!-- Submit button -->
-                    <div class="field button-field">
-                        <button type="submit" value="submit">Inciar sesion</button> 
                     </div>
                     
                 </form>
