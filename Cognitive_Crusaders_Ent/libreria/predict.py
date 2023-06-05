@@ -22,9 +22,6 @@ def transf (INF_Label : str):
     #Convertimos la fecha en formato date
     dataframe['fecha'] = pd.to_datetime(dataframe['fecha'])
 
-    #Convertimos la fecha en formato date
-    dataframe['fecha'] = pd.to_datetime(dataframe['fecha'])
-
     #Hacemos limpieza de los datos del clima que no necesitaremos
     df_clima_clean = df_clima.drop(columns=["visibility","id"])
     #Sacamos la fecha en una columna diferente
@@ -48,8 +45,9 @@ def transf (INF_Label : str):
     #Renombramos las columnas
     dataframe = dataframe.rename(columns = {"INF_Values":"DATOS","fecha":"FECHA", "hora":"HORA", "ano":"AÑO","mes":"MES","dia":"DIA","dia_semana":"DIA_SEMANA"})
 
-    #Convertimos la hora en formato de fecha
-    dataframe['HORA'] = pd.to_datetime(dataframe['HORA'])
+    #Sacamos la hora y minuto de la columna hora
+    dataframe['HORA_NUMERICA'] = pd.to_datetime(dataframe['HORA'], format='%H:%M:%S').dt.hour
+    dataframe['MINUTO_NUMERICO'] = pd.to_datetime(dataframe['HORA'], format='%H:%M:%S').dt.minute
 
 
     return dataframe
