@@ -9,19 +9,14 @@ def index(request):
     context = {
         'labels': labels
     }
-    return render(request, 'index.html', context)
+    return render(request, 'graph_index.html', context)
 
 def get_chart(request):
     label = request.GET.get('label')
     fecha_inicio = request.GET.get('fecha_inicio')
     fecha_fin = request.GET.get('fecha_fin')
 
-    print("Hola")
-
     data = Caudal.objects.filter(INF_Label=label, RowKey__date__range=[fecha_inicio, fecha_fin]).values('RowKey', 'INF_Value').order_by('RowKey')
-
-    print(request.GET.get('fecha_inicio'))
-    print(request.GET.get('fecha_fin'))
     
     # Resto del código
     #colors = ['blue', 'orange', 'red', 'black', 'yellow', 'green', 'magenta', 'lightblue', 'purple', 'brown']
