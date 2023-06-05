@@ -39,6 +39,17 @@ def transf (INF_Label : str):
     #Juntamos la fecha de los caudales con la del clima
     dataframe = pd.merge(df_clima_agrup,dataframe, on="fecha")
 
-    
+    #Dividimos la fecha en año, mes, dia, dia_semana
+    dataframe['ano'] = dataframe['fecha'].dt.year
+    dataframe['mes'] = dataframe['fecha'].dt.month
+    dataframe['dia'] = dataframe['fecha'].dt.day
+    dataframe['dia_semana'] = dataframe['fecha'].dt.weekday
+
+    #Renombramos las columnas
+    dataframe = dataframe.rename(columns = {"INF_Values":"DATOS","fecha":"FECHA", "hora":"HORA", "ano":"AÑO","mes":"MES","dia":"DIA","dia_semana":"DIA_SEMANA"})
+
+    #Convertimos la hora en formato de fecha
+    dataframe['HORA'] = pd.to_datetime(dataframe['HORA'])
+
 
     return dataframe
