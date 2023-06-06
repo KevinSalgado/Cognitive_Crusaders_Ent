@@ -29,11 +29,11 @@ class Cliente(Usuario):
 
 
 class Administrador(Usuario):
-    Sueldo = models.FloatField()
+    Sueldo = models.FloatField(null=True)
 
 
 class Trabajador(Usuario):
-    Sueldo = models.FloatField()
+    Sueldo = models.FloatField(null=True)
     Fecha_Ingreso = models.DateField(null=True)
     Especialidad = models.CharField(max_length=150, null=True)
     fk_Administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE, null=True)

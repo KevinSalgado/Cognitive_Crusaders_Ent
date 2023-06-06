@@ -93,7 +93,7 @@ def AgregarTrabajadores(Request):
                 Sueldo=user_creation_form.cleaned_data['sueldo'],
                 Fecha_Ingreso=timezone.now(),
                 Especialidad=user_creation_form.cleaned_data['especialidad'],
-                #fk_Administrador=administrador
+                fk_Administrador=administrador
             )
             trabajador.save()
 
