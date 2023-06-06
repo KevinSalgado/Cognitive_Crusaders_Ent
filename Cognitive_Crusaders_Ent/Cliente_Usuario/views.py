@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm, CustomUserCreationFormExtendedTrabajador
 from django.contrib.auth import authenticate, login
-from .models import Administrador, Cliente, Trabajador
+from .models import Administrador, Cliente, Trabajador, Rol
 from django.contrib.auth.models import Group, User
 from django.utils import timezone
 
@@ -84,16 +84,19 @@ def AgregarTrabajadores(Request):
         # Agregamos el usuario a la tabla de clientes
         if user_creation_form.is_valid():
             user = user_creation_form.save()
-            administrador = User.objects.get(id=Request.user.id)
+            administrador = Administrador.objects.get(id_usuario=Request.user.id)
+            fkrolid = Rol.objects.get(id_rol=2)
             trabajador = Trabajador (
                 username = user.username,
-                nombre=user.first_name,
-                apellido=user.last_name,
-                correo=user.email,
+                nombre=user_creation_form.cleaned_data['first_name'],
+                apellido=user_creation_form.cleaned_data['last_name'],
+                correo=user_creation_form.cleaned_data['email'],
                 Sueldo=user_creation_form.cleaned_data['sueldo'],
                 Fecha_Ingreso=timezone.now(),
                 Especialidad=user_creation_form.cleaned_data['especialidad'],
-                fk_Administrador=administrador
+                telefono = user_creation_form.cleaned_data['telefono'],
+                fk_Administrador=administrador,
+                fk_Rol=fkrolid
             )
             trabajador.save()
 
@@ -104,7 +107,7 @@ def AgregarTrabajadores(Request):
                 Trabajadores = Group.objects.create(name='Trabajadores')
             user.groups.add(Trabajadores)
 
-            # Autenticamos y logeamos al usuario
+            # Autenticamos al usuario
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             #login(Request, user)
             return render(Request, 'index.html', {'request': Request})
