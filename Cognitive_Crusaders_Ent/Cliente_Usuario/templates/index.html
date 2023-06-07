@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cognitive Crusaders | Data Science </title>
-    <link rel="shortcut icon" href="{% static 'favicon/cognitive_crusaders_logo.svg' %}" type="image/x-icon" />
-    <link rel="stylesheet" href="{% static 'css/hero_section.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/features_section.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/clients_section.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/footer_section.css' %}" />
+    <link rel="shortcut icon" href="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/hero_section.css' %}" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/features_section.css' %}" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/clients_section.css' %}" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/footer_section.css' %}" />
     <link href='https://fonts.googleapis.com/css?family=Spectral' rel='stylesheet' />
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' />
     <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css” />
@@ -23,7 +23,7 @@
     <header class="navigation-desktop">
         <div class="container">
             <div class="logo-replace-with-your-own">
-                <img src="{% static 'favicon/cognitive_crusaders_logo.svg'%}" alt="cognitive_crusaders_logo"
+                <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg'%}" alt="cognitive_crusaders_logo"
                     class="image-1">
                 <span class="text">Cognitive Crusaders</span>
             </div>
@@ -31,38 +31,38 @@
             <div class="navigation">
                 <button type="button" class="home">
                     <div class="vectors-wrapper">
-                        <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
                     <span class="paragraph-m-medium">Inicio</span>
                 </button>
                 <a href="#services" class="home">
                     <div class="vectors-wrapper">
-                        <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
                     <span class="paragraph-m-medium">Servicios</span>
                 </a>
                 <button type="button" class="home">
                     <div class="vectors-wrapper">
-                        <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
                     <span class="paragraph-m-medium">About us</span>
                 </button>
                 <button type="button" class="home">
                     <div class="vectors-wrapper">
-                        <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
                     <span class="paragraph-m-medium">Blog</span>
                 </button>
                 <a href="#footer" class="home">
                     <div class="vectors-wrapper">
-                        <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
                     <span class="paragraph-m-medium">Contacto</span>
                 </a>
                 {% if request.user.is_superuser %}
                     <a href="/AgregarTrabajadores" class="home">
                         <div class="vectors-wrapper">
-                            <img src="{% static 'images/vectors-wrapper-dark.svg' %}" alt="icon">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                         </div>
                         <span class="paragraph-m-medium">Agregar Trabajadores</span>
                     </a>
@@ -72,14 +72,14 @@
                     <a href="{% url 'Salir' %}" class="start-now">
                         <span class="paragraph-s-semi-bold">Cerrar Sesión {{ request.user.username }}</span>
                         <div class="vectors-wrapper">
-                            <img src="{% static 'images/vectors-wrapper-light.svg' %}" alt="">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
                         </div>
                     </a>
                 {% else %}
                     <a href="{% url 'Register' %}" class="start-now">
                         <span class="paragraph-s-semi-bold">Comenzar</span>
                         <div class="vectors-wrapper">
-                            <img src="{% static 'images/vectors-wrapper-light.svg' %}" alt="">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
                         </div>
                     </a>
                 {% endif %}
@@ -117,7 +117,7 @@
                                     <button type="button" class="button">
                                         <span class="paragraph-s-semi-bold">¡Vamos!</span>
                                         <div class="vectors-wrapper">
-                                            <img src="{% static 'images/arrows/arrow-right-light.svg' %}"
+                                            <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-light.svg' %}"
                                                 alt="arrow-right">
                                         </div>
                                     </button>
@@ -126,18 +126,18 @@
                                     <span class="paragraph-l-regular">Recomendados por nuestros más de 1M de
                                         clientes</span>
                                     <div class="ratings">
-                                        <img src="{% static 'images/rating-star.svg' %}" alt="rating-star">
-                                        <img src="{% static 'images/rating-star.svg' %}" alt="rating-star">
-                                        <img src="{% static 'images/rating-star.svg' %}" alt="rating-star">
-                                        <img src="{% static 'images/rating-star.svg' %}" alt="rating-star">
-                                        <img src="{% static 'images/rating-star.svg' %}" alt="rating-star">
+                                        <img src="{% static 'Cliente_Usuario/images/rating-star.svg' %}" alt="rating-star">
+                                        <img src="{% static 'Cliente_Usuario/images/rating-star.svg' %}" alt="rating-star">
+                                        <img src="{% static 'Cliente_Usuario/images/rating-star.svg' %}" alt="rating-star">
+                                        <img src="{% static 'Cliente_Usuario/images/rating-star.svg' %}" alt="rating-star">
+                                        <img src="{% static 'Cliente_Usuario/images/rating-star.svg' %}" alt="rating-star">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="column-2">
-                            <img src="{% static 'images/girl.png' %}" alt="girl" class="image-2">
+                            <img src="{% static 'Cliente_Usuario/images/girl.png' %}" alt="girl" class="image-2">
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                                 <div class="header">
                                     <div class="featured-icons">
                                         <div class="vectors-wrappers-4">
-                                            <img src="{% static 'images/search.svg' %}" alt="search">
+                                            <img src="{% static 'Cliente_Usuario/images/search.svg' %}" alt="search">
                                         </div>
                                     </div>
                                     <div class="text-4">
@@ -190,7 +190,7 @@
                                 <button type="button" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
-                                        <img src="{% static 'images/arrows/arrow-right-blue.svg' %}"
+                                        <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
                                 </button>
@@ -200,7 +200,7 @@
                                 <div class="header">
                                     <div class="featured-icons">
                                         <div class="vectors-wrappers-4">
-                                            <img src="{% static 'images/line-chart.svg' %}" alt="line-chart">
+                                            <img src="{% static 'Cliente_Usuario/images/line-chart.svg' %}" alt="line-chart">
                                         </div>
                                     </div>
                                     <div class="text-4">
@@ -214,7 +214,7 @@
                                 <button type="button" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
-                                        <img src="{% static 'images/arrows/arrow-right-blue.svg' %}"
+                                        <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
                                 </button>
@@ -224,7 +224,7 @@
                                 <div class="header">
                                     <div class="featured-icons">
                                         <div class="vectors-wrappers-4">
-                                            <img src="{% static 'images/bussiness.svg' %}" alt="bussiness">
+                                            <img src="{% static 'Cliente_Usuario/images/bussiness.svg' %}" alt="bussiness">
                                         </div>
                                     </div>
                                     <div class="text-4">
@@ -238,7 +238,7 @@
                                 <button type="button" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
-                                        <img src="{% static 'images/arrows/arrow-right-blue.svg' %}"
+                                        <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
                                 </button>
@@ -250,21 +250,21 @@
                                 <div class="gallery-2">
                                     <div class="left">
                                         <div class="rectangle-145">
-                                            <img src="{% static 'images/services/data-analitycs.png' %}" alt="data"
+                                            <img src="{% static 'Cliente_Usuario/images/services/data-analitycs.png' %}" alt="data"
                                                 class="rectangle-145">
                                         </div>
                                         <div class="rectangle-148">
-                                            <img src="{% static 'images/services/predictive-model.png' %}"
+                                            <img src="{% static 'Cliente_Usuario/images/services/predictive-model.png' %}"
                                                 alt="predictive.model" class="rectangle-148">
                                         </div>
                                     </div>
                                     <div class="left">
                                         <div class="rectangle-148">
-                                            <img src="{% static 'images/services/img-1.png' %}" alt="img-1"
+                                            <img src="{% static 'Cliente_Usuario/images/services/img-1.png' %}" alt="img-1"
                                                 class="rectangle-148">
                                         </div>
                                         <div class="rectangle-145">
-                                            <img src="{% static 'images/services/img-2.png' %}" alt="img-2"
+                                            <img src="{% static 'Cliente_Usuario/images/services/img-2.png' %}" alt="img-2"
                                                 class="rectangle-145">
                                         </div>
                                     </div>
@@ -299,34 +299,34 @@
                     <div class="content-3">
                         <div class="logos">
                             <div class="_1">
-                                <img src="{% static 'images/clients/acciona.svg' %}" alt="acciona" class="_1-inside">
+                                <img src="{% static 'Cliente_Usuario/images/clients/acciona.svg' %}" alt="acciona" class="_1-inside">
                             </div>
                             <div class="_2">
-                                <img src="{% static 'images/clients/skywave.svg' %}" alt="skywave" class="_2-inside">
+                                <img src="{% static 'Cliente_Usuario/images/clients/skywave.svg' %}" alt="skywave" class="_2-inside">
                             </div>
                             <div class="_3">
-                                <img src="{% static 'images/clients/nexacore.svg' %}" alt="nexacore" class="_3-inside">
+                                <img src="{% static 'Cliente_Usuario/images/clients/nexacore.svg' %}" alt="nexacore" class="_3-inside">
                             </div>
                             <div class="_4">
-                                <img src="{% static 'images/clients/elitexcel.svg' %}" alt="elitexcel" clas="_4-inside">
+                                <img src="{% static 'Cliente_Usuario/images/clients/elitexcel.svg' %}" alt="elitexcel" clas="_4-inside">
                             </div>
                         </div>
 
                         <div class="logos">
                             <div class="_1">
-                                <img src="{% static 'images/clients/zenithron.svg' %}" alt="zenithron"
+                                <img src="{% static 'Cliente_Usuario/images/clients/zenithron.svg' %}" alt="zenithron"
                                     class="_1-inside">
                             </div>
                             <div class="_2">
-                                <img src="{% static 'images/clients/ennovatek.svg' %}" alt="ennovatek"
+                                <img src="{% static 'Cliente_Usuario/images/clients/ennovatek.svg' %}" alt="ennovatek"
                                     class="_2-inside">
                             </div>
                             <div class="_3">
-                                <img src="{% static 'images/clients/infinitumix.svg' %}" alt="infinitumix"
+                                <img src="{% static 'Cliente_Usuario/images/clients/infinitumix.svg' %}" alt="infinitumix"
                                     class="_3-inside">
                             </div>
                             <div class="_4">
-                                <img src="{% static 'images/clients/spectrafuse.svg' %}" alt="spectrafuse"
+                                <img src="{% static 'Cliente_Usuario/images/clients/spectrafuse.svg' %}" alt="spectrafuse"
                                     class="_4-inside">
                             </div>
                         </div>
@@ -347,7 +347,7 @@
                         <div class="logo-description">
                             <div class="logo-replace-with-your-own-2">
                                 <div class="vectors-wrapper-16">
-                                    <img src="{% static 'favicon/cognitive_crusaders_logo.svg' %}"
+                                    <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}"
                                         alt="cognitive_crusaders_logo" class="vectors-wrapper-16"/>
                                 </div>
                                 <div class="text-wrap-2">
@@ -359,10 +359,10 @@
                         </div>
 
                         <div class="social-icon">
-                            <img src="{% static 'images/social_icons/instagram.svg' %}" alt="instagram" class="vectors-wrapper-17">
-                            <img src="{% static 'images/social_icons/facebook.svg' %}" alt="facebook" class="vectors-wrapper-17">
-                            <img src="{% static 'images/social_icons/twitter.svg' %}" alt="twitter" class="vectors-wrapper-17">
-                            <img src="{% static 'images/social_icons/linkedin.svg' %}" alt="linkedin" class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/instagram.svg' %}" alt="instagram" class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/facebook.svg' %}" alt="facebook" class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/twitter.svg' %}" alt="twitter" class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/linkedin.svg' %}" alt="linkedin" class="vectors-wrapper-17">
                         </div>
                     </div>
 
@@ -372,25 +372,25 @@
                             <div class="footer-links-column">
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Planes</span>
                                 </button>
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Aplicaciones</span>
                                 </button>
                                 <a href="#services" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Servicios</span>
                                 </a>
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Reseñas</span>
                                 </button>
@@ -401,19 +401,19 @@
                             <div class="footer-links-column">
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">About us</span>
                                 </button>
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Blog</span>
                                 </button>
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Contacto</span>
                                 </button>
@@ -424,19 +424,19 @@
                             <div class="footer-links-column">
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Centro de ayuda</span>
                                 </button>
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Reporta un bug</span>
                                 </button>
                                 <button type="button" class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/vectors-wrapper-light.svg' %}" alt="icon">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
                                     </div>
                                     <span class="paragraph-m-medium-light">Chat de soporte</span>
                                 </button>
@@ -447,19 +447,19 @@
                             <div class="footer-links-column">
                                 <div class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/footer/email.svg' %}" alt="email">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/email.svg' %}" alt="email">
                                     </div>
                                     <span class="paragraph-m-medium-light">contact@ccrusaders.ent</span>
                                 </div>
                                 <div class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/footer/phone.svg' %}" alt="phone">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/phone.svg' %}" alt="phone">
                                     </div>
                                     <span class="paragraph-m-medium-light">+1 (500) 300 250</span>
                                 </div>
                                 <div class="button-4">
                                     <div class="vectors-wrapper-18">
-                                        <img src="{%  static 'images/footer/location-gray.svg' %}" alt="location">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/location-gray.svg' %}" alt="location">
                                     </div>
                                     <span class="paragraph-m-medium-light">3891 Ranchview <br>
                                         Dr. Richardson, CA 62639</span>
@@ -476,7 +476,7 @@
                     <div class="legal">
                         <span class="paragraph-m-regular-4">Terms of Service</span>
                         <div class="vectors-wrapper-20">
-                            <img src="{% static 'images/footer/separator.svg' %}" alt="separator">
+                            <img src="{% static 'Cliente_Usuario/images/footer/separator.svg' %}" alt="separator">
                         </div>
                         <span class="paragraph-m-regular-4">Privacy Policy</span>
                     </div>
