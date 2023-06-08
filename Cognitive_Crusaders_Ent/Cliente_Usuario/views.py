@@ -123,5 +123,11 @@ def AgregarTrabajadores(Request):
 def index(Request):
     return render(Request, 'index.html', {'request': Request})
 
+@user_passes_test(lambda user: user.is_superuser)
+def VisualizarTrabajadores(Request):
+    trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
+    print(trabajadores)
+    return render(Request, 'VisualizarTrabajadores.html', {'trabajadores': trabajadores})
+
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
