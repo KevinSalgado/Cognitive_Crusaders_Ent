@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Pedido</title>
+</head>
+<body>
+    <h1>Formulario de Pedido</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="alcance">Alcance:</label>
+        <input type="text" id="alcance" name="alcance" required><br><br>
+
+        <label for="plazo_inicio">Plazo de inicio:</label>
+        <input type="date" id="plazo_inicio" name="plazo_inicio" required><br><br>
+
+        <label for="plazo_fin">Plazo de fin:</label>
+        <input type="date" id="plazo_fin" name="plazo_fin" required><br><br>
+
+        <label for="presupuesto">Presupuesto:</label>
+        <input type="number" id="presupuesto" name="presupuesto" required><br><br>
+
+        <label for="info_adicional">Información adicional:</label>
+        <textarea id="info_adicional" name="info_adicional" required></textarea><br><br>
+
+        <input type="hidden" id="fk_Cliente_id" name="fk_Cliente_id" value="{{ request.user.id }}">
+
+        <label for="fk_TipoPedido_id">Tipo de Pedido:</label>
+        <select id="fk_TipoPedido_id" name="fk_TipoPedido_id">
+            <option value="1">Análisis de datos</option>
+            <option value="2">Modelado predictivo</option>
+            <option value="3">Análisis de mercado</option>
+        </select><br><br>
+
+        
+
+        <input type="submit" value="Guardar Pedido">
+    </form>
+</body>
+</html>

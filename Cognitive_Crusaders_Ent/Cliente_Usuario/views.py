@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm, CustomUserCreationFormExtendedTrabajador
 from django.contrib.auth import authenticate, login
-from .models import Administrador, Cliente, Trabajador, Rol
+from .models import Administrador, Cliente, Trabajador, Rol, Pedido, Status
 from django.contrib.auth.models import Group, User
 from django.utils import timezone
 
@@ -128,6 +128,39 @@ def VisualizarTrabajadores(Request):
     trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
     print(trabajadores)
     return render(Request, 'VisualizarTrabajadores.html', {'trabajadores': trabajadores})
+
+@login_required()
+def Pedido(request):
+    if request.method == 'POST':
+        alcance = request.POST.get('alcance')
+        plazo_inicio = request.POST.get('plazo_inicio')
+        plazo_fin = request.POST.get('plazo_fin')
+        presupuesto = request.POST.get('presupuesto')
+        info_adicional = request.POST.get('info_adicional')
+        fk_Cliente_id = request.POST.get('fk_Cliente_id')
+        fk_TipoPedido_id = request.POST.get('fk_TipoPedido_id')
+        fk_status_id = request.POST.get('fk_status_id')
+
+        # Obtener los objetos de las tablas relacionadas
+        cliente = Cliente.objects.get(id_usuario=fk_Cliente_id)
+        pedido = Pedido.objects.get(id_pedido=fk_TipoPedido_id)
+        status = Status.objects.get(id_status=4)
+        # Crear un objeto Pedido y guardar los datos
+        pedido = Pedido(
+            Alcance=alcance,
+            Plazo_inicio=plazo_inicio,
+            Plazo_fin=plazo_fin,
+            Presupuesto=presupuesto,
+            Info_adicional=info_adicional,
+            fk_Cliente=cliente,
+            fk_TipoPedido=pedido,
+            fk_Status=status
+        )
+        pedido.save()
+
+        # Redireccionar al inicio
+        return render(request, 'index.html', {'request': request})
+    return render(request, 'Pedido.html', {'request': request})
 
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
