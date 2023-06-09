@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm, CustomUserCreationFormExtendedTrabajador, CustomUserCreationFormExtendedCliente
 from django.contrib.auth import authenticate, login
-from .models import Administrador, Cliente, Trabajador, Rol, Pedido, Status
+from .models import Administrador, Cliente, Trabajador, Rol, Pedido as pedidos_, Status, TipoPedido
 from django.contrib.auth.models import Group, User
 from django.utils import timezone
 
@@ -91,6 +91,7 @@ def AgregarTrabajadores(Request):
             administrador = Administrador.objects.get(id_usuario=Request.user.id)
             fkrolid = Rol.objects.get(id_rol=2)
             trabajador = Trabajador (
+                id_usuario = user.id,
                 username = user.username,
                 nombre=user_creation_form.cleaned_data['first_name'],
                 apellido=user_creation_form.cleaned_data['last_name'],
@@ -133,7 +134,8 @@ def VisualizarTrabajadores(Request):
     print(trabajadores)
     return render(Request, 'VisualizarTrabajadores.html', {'trabajadores': trabajadores})
 
-@login_required()
+#@user_passes_test(lambda user: user.is_group('Clientes'))
+@user_passes_test(lambda user: user.groups.filter(name='Clientes').exists())
 def Pedido(request):
     if request.method == 'POST':
         alcance = request.POST.get('alcance')
@@ -147,10 +149,10 @@ def Pedido(request):
 
         # Obtener los objetos de las tablas relacionadas
         cliente = Cliente.objects.get(id_usuario=fk_Cliente_id)
-        pedido = Pedido.objects.get(id_pedido=fk_TipoPedido_id)
+        pedido = TipoPedido.objects.get(id_tipoPedido=fk_TipoPedido_id)
         status = Status.objects.get(id_status=4)
         # Crear un objeto Pedido y guardar los datos
-        pedido = Pedido(
+        pedido_objeto_creado = pedidos_(
             Alcance=alcance,
             Plazo_inicio=plazo_inicio,
             Plazo_fin=plazo_fin,
@@ -160,7 +162,7 @@ def Pedido(request):
             fk_TipoPedido=pedido,
             fk_Status=status
         )
-        pedido.save()
+        pedido_objeto_creado.save()
 
         # Redireccionar al inicio
         return render(request, 'index.html', {'request': request})
