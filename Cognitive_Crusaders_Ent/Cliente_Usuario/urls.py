@@ -11,6 +11,7 @@ urlpatterns = [
     path('VisualizarTrabajadores/', views.VisualizarTrabajadores, name='VisualizarTrabajadores'),
     path('Pedido/', views.Pedido, name='Pedido'),
     path('Pedidos_del_Usuario/', views.Pedidos_del_Usuario, name='Pedidos_del_Usuario'),
+    path('Pedidos_pendientes/', views.Pedidos_pendientes, name='Pedidos_pendientes'),
     #path('register/', views.Register, name='signup'),
     # path('index/', views.index, name='index')
 ]

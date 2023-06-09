@@ -172,5 +172,10 @@ def Pedidos_del_Usuario(request):
     pedidos = pedidos_.objects.filter(fk_Cliente=request.user.id)
     return render(request, 'Pedidos_del_Usuario.html', {'pedidos': pedidos})
 
+@user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists() or user.is_superuser)
+def Pedidos_pendientes(request):
+    pedidos = pedidos_.objects.filter(fk_Status=4)
+    return render(request, 'Pedidos_pendientes.html', {'pedidos': pedidos})
+
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')

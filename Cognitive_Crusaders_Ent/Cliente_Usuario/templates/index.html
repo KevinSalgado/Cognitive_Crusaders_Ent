@@ -84,6 +84,15 @@
                     </a>
                 {% endif %}
 
+                {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Trabajadores' or request.user.is_superuser %}
+                    <a href="/Pedidos_pendientes" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Pedidos pendientes</span>
+                    </a>
+                {% endif %}
+
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'Salir' %}" class="start-now">
                         <span class="paragraph-s-semi-bold">Cerrar Sesión {{ request.user.username }}</span>
