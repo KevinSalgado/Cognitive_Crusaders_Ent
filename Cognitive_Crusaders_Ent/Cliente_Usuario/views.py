@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
 from .forms import CustomUserCreationForm, CustomUserCreationFormExtendedTrabajador, CustomUserCreationFormExtendedCliente
 from django.contrib.auth import authenticate, login
-from .models import Administrador, Cliente, Trabajador, Rol, Pedido as pedidos_, Status, TipoPedido
+from .models import Administrador, Cliente, Trabajador, Rol, Pedido as pedidos_, Status, TipoPedido, PedidoTrabajador
 from django.contrib.auth.models import Group, User
 from django.utils import timezone
 
@@ -174,8 +174,42 @@ def Pedidos_del_Usuario(request):
 
 @user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists() or user.is_superuser)
 def Pedidos_pendientes(request):
+
+    # El trabajador puede seleccionar pedidos para procesarlos
+    if request.method == 'POST':
+        pedidos_seleccionados = request.POST.getlist('pedidos_seleccionados')
+
+        # Cambiamos el estado de los pedidos seleccionados
+        for pedidos in pedidos_seleccionados:
+            pedido = pedidos_.objects.get(id_pedido=pedidos)
+            pedido.fk_Status = Status.objects.get(id_status=2)
+            pedido.save()
+
+        # Creamos un objeto PedidoTrabajador para cada pedido seleccionado
+        pedido_trabajador = PedidoTrabajador(
+            Fecha_Aceptado=timezone.now(),
+            fk_Pedido=pedido,
+            fk_Trabajador=Trabajador.objects.get(id_usuario=request.user.id)
+        )
+        pedido_trabajador.save()
+        
+        return render(request, 'index.html', {'request': request})
+    
+    # Si el usuario es un trabajador se le muestran los pedidos que estan pendientes
     pedidos = pedidos_.objects.filter(fk_Status=4)
     return render(request, 'Pedidos_pendientes.html', {'pedidos': pedidos})
+
+# def procesar_pedidos(request):
+#     if request.method == 'POST':
+#         pedidos_seleccionados = request.POST.getlist('pedidos_seleccionados')
+
+#         print(pedidos_seleccionados)
+#         # for pedidos in pedidos_seleccionados:
+#         #     pedido = pedidos_.objects.get(id_pedido=pedidos)
+#         #     pedido.fk_Status = Status.objects.get(id_status=5)
+#         #     pedido.save()
+        
+#         return render(request, 'index.html', {'request': request})
 
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
