@@ -199,6 +199,12 @@ def Pedidos_pendientes(request):
     pedidos = pedidos_.objects.filter(fk_Status=4)
     return render(request, 'Pedidos_pendientes.html', {'pedidos': pedidos})
 
+
+@user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists())
+def Pedidos_empleados(request):
+    pedidos = PedidoTrabajador.objects.filter(fk_Trabajador=request.user.id)
+    return render(request, 'Pedidos_empleados.html', {'pedidos': pedidos})
+
 # def procesar_pedidos(request):
 #     if request.method == 'POST':
 #         pedidos_seleccionados = request.POST.getlist('pedidos_seleccionados')

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Lista de pedidos del trabajador {{ request.user.username }}</h1>
+        <ul>
+            {% for pedidotrabajador in pedidos %}
+                <li>
+                    Tipo Pedido: {{ pedidotrabajador.fk_Pedido.fk_TipoPedido.nombre }}
+                    Cliente: {{ pedidotrabajador.fk_Pedido.fk_Cliente.nombre }}
+                    Telefono: {{ pedidotrabajador.fk_Pedido.fk_Cliente.telefono }}
+                    email: {{ pedidotrabajador.fk_Pedido.fk_Cliente.correo }}
+                    Alcance: {{ pedidotrabajador.fk_Pedido.Alcance }}
+                    Plazo inicio: {{ pedidotrabajador.fk_Pedido.Plazo_inicio }}
+                    Plazo fin: {{ pedidotrabajador.fk_Pedido.Plazo_fin }}
+                    Presupuesto: {{ pedidotrabajador.fk_Pedido.Presupuesto }}
+                    Informacion adicional: {{ pedidotrabajador.fk_Pedido.Info_adicional }}
+                    Status: {{ pedidotrabajador.fk_Pedido.fk_Status.nombre }}
+                </li>
+            {% endfor %}
+        </ul>
+</body>
+</html>
