@@ -6,7 +6,7 @@
 <body>
     <ul>
         {% for pedido in pedidos %}
-            <li>{{ pedido }}</li>
+            <li>Tipo Pedido: {{ pedido.fk_TipoPedido.nombre }}  Alcance: {{pedido.Alcance}}  Plazo incio: {{pedido.Plazo_inicio}}    Plazo fin: {{pedido.Plazo_fin}}   Presupuesto: {{pedido.Presupuesto}}   Informacion adicional: {{pedido.Info_adicional}}</li>
         {% endfor %}
     </ul>
 </body>
