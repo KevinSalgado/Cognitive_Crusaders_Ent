@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de pedidos del usuario {{ request.user.username }}</title>
+</head>
+<body>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>{{ pedido }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

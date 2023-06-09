@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,6 +72,15 @@
                             <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                         </div>
                         <span class="paragraph-m-medium">Ver Trabajadores</span>
+                    </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Clientes' %}
+                    <a href="/Pedidos_del_Usuario" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Mis pedidos</span>
                     </a>
                 {% endif %}
 

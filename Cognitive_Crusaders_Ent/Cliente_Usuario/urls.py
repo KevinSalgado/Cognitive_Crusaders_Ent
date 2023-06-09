@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', views.Login, name='login'),
     path('VisualizarTrabajadores/', views.VisualizarTrabajadores, name='VisualizarTrabajadores'),
     path('Pedido/', views.Pedido, name='Pedido'),
+    path('Pedidos_del_Usuario/', views.Pedidos_del_Usuario, name='Pedidos_del_Usuario'),
     #path('register/', views.Register, name='signup'),
     # path('index/', views.index, name='index')
 ]

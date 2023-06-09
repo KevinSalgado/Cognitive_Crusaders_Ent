@@ -131,7 +131,6 @@ def index(Request):
 @user_passes_test(lambda user: user.is_superuser)
 def VisualizarTrabajadores(Request):
     trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
-    print(trabajadores)
     return render(Request, 'VisualizarTrabajadores.html', {'trabajadores': trabajadores})
 
 #@user_passes_test(lambda user: user.is_group('Clientes'))
@@ -167,6 +166,11 @@ def Pedido(request):
         # Redireccionar al inicio
         return render(request, 'index.html', {'request': request})
     return render(request, 'Pedido.html', {'request': request})
+
+@user_passes_test(lambda user: user.groups.filter(name='Clientes').exists())
+def Pedidos_del_Usuario(request):
+    pedidos = pedidos_.objects.filter(fk_Cliente=request.user.id)
+    return render(request, 'Pedidos_del_Usuario.html', {'pedidos': pedidos})
 
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
