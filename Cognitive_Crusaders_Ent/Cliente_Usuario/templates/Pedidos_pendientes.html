@@ -1,3 +1,4 @@
+{% load custom_tags %}
 <!DOCTYPE html>
 <html>
 <body>
@@ -7,7 +8,11 @@
         <ul>
             {% for pedido in pedidos %}
                 <li>
-                    <input type="checkbox" name="pedidos_seleccionados" value="{{ pedido.id_pedido }}">
+                    {% if request.user|user_belongs_to_group:'Trabajadores' %}
+                        <input type="checkbox" name="pedidos_seleccionados" value="{{ pedido.id_pedido }}">
+                    {% else %}
+                        <input type="checkbox" name="pedidos_seleccionados" value="{{ pedido.id_pedido }}" disabled>
+                    {% endif %}
                     Tipo Pedido: {{ pedido.fk_TipoPedido.nombre }}
                     Cliente: {{ pedido.fk_Cliente.nombre }}
                     Alcance: {{ pedido.Alcance }}
