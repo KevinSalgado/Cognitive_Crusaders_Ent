@@ -23,7 +23,7 @@
         <label for="info_adicional">Información adicional:</label>
         <textarea id="info_adicional" name="info_adicional" required></textarea><br><br>
 
-        <input type="hidden" id="fk_Cliente_id" name="fk_Cliente_id" value="{{ request.user.id }}">
+        {% comment %} <input type="hidden" id="fk_Cliente_id" name="fk_Cliente_id" value="{{ request.user.id }}"> {% endcomment %}
 
         <label for="fk_TipoPedido_id">Tipo de Pedido:</label>
         <select id="fk_TipoPedido_id" name="fk_TipoPedido_id">

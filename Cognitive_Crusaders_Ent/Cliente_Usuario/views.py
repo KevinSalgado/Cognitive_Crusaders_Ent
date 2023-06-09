@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.template import loader
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import logout
-from .forms import CustomUserCreationForm, CustomUserCreationFormExtendedTrabajador
+from .forms import CustomUserCreationForm, CustomUserCreationFormExtendedTrabajador, CustomUserCreationFormExtendedCliente
 from django.contrib.auth import authenticate, login
 from .models import Administrador, Cliente, Trabajador, Rol, Pedido, Status
 from django.contrib.auth.models import Group, User
@@ -30,20 +30,24 @@ def Salir(Request):
 def Register(Request):
 
     data = {
-        'form': CustomUserCreationForm()
+        'form': CustomUserCreationFormExtendedCliente()
     }
 
     if Request.method == 'POST':
-        user_creation_form = CustomUserCreationForm(data=Request.POST)
+        user_creation_form = CustomUserCreationFormExtendedCliente(data=Request.POST)
 
         # Agregamos el usuario a la tabla de clientes
         if user_creation_form.is_valid():
             user = user_creation_form.save()
+            fkrolid = Rol.objects.get(id_rol=3)
             cliente = Cliente(
+                id_usuario = user.id,
                 username = user.username,
-                nombre=user.first_name,
-                apellido=user.last_name,
-                correo=user.email,
+                nombre=user_creation_form.cleaned_data['first_name'],
+                apellido=user_creation_form.cleaned_data['last_name'],
+                correo=user_creation_form.cleaned_data['email'],
+                telefono = user_creation_form.cleaned_data['telefono'],
+                fk_Rol=fkrolid
             )
             cliente.save()
 
@@ -137,9 +141,9 @@ def Pedido(request):
         plazo_fin = request.POST.get('plazo_fin')
         presupuesto = request.POST.get('presupuesto')
         info_adicional = request.POST.get('info_adicional')
-        fk_Cliente_id = request.POST.get('fk_Cliente_id')
+        fk_Cliente_id = request.user.id
         fk_TipoPedido_id = request.POST.get('fk_TipoPedido_id')
-        fk_status_id = request.POST.get('fk_status_id')
+        #fk_status_id = request.POST.get('fk_status_id')
 
         # Obtener los objetos de las tablas relacionadas
         cliente = Cliente.objects.get(id_usuario=fk_Cliente_id)
