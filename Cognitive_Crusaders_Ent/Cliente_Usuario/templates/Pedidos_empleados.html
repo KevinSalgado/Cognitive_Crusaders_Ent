@@ -6,27 +6,30 @@
             {% csrf_token %}
             <ul>
                 {% for pedidotrabajador in pedidos %}
-                    <li>
-                        Tipo Pedido: {{ pedidotrabajador.fk_Pedido.fk_TipoPedido.nombre }}
-                        Cliente: {{ pedidotrabajador.fk_Pedido.fk_Cliente.username }}
-                        Telefono: {{ pedidotrabajador.fk_Pedido.fk_Cliente.telefono }}
-                        email: {{ pedidotrabajador.fk_Pedido.fk_Cliente.correo }}
-                        Alcance: {{ pedidotrabajador.fk_Pedido.Alcance }}
-                        Plazo inicio: {{ pedidotrabajador.fk_Pedido.Plazo_inicio }}
-                        Plazo fin: {{ pedidotrabajador.fk_Pedido.Plazo_fin }}
-                        Presupuesto: {{ pedidotrabajador.fk_Pedido.Presupuesto }}
-                        Informacion adicional: {{ pedidotrabajador.fk_Pedido.Info_adicional }}
-                        <label for="Status">Status: </label>
-                        <select id="Status" name="Status[]">
-                            <option value="0" selected>{{ pedidotrabajador.fk_Pedido.fk_Status.nombre }}</option>
-                            <option value="1">Terminada</option>
-                            <option value="2">En proceso</option>
-                            <option value="3">Con problemas</option>
-                            <option value="4">Pendiente</option>
-                        </select><br><br>
+                        {% comment %} Me salto los pedidos que estan en estado Terminado, ya que termino su proceso {% endcomment %}
+                        {% if pedidotrabajador.fk_Pedido.fk_Status.id_status != 1 %}
+                            <li>
+                                Tipo Pedido: {{ pedidotrabajador.fk_Pedido.fk_TipoPedido.nombre }}
+                                Cliente: {{ pedidotrabajador.fk_Pedido.fk_Cliente.username }}
+                                Telefono: {{ pedidotrabajador.fk_Pedido.fk_Cliente.telefono }}
+                                email: {{ pedidotrabajador.fk_Pedido.fk_Cliente.correo }}
+                                Alcance: {{ pedidotrabajador.fk_Pedido.Alcance }}
+                                Plazo inicio: {{ pedidotrabajador.fk_Pedido.Plazo_inicio }}
+                                Plazo fin: {{ pedidotrabajador.fk_Pedido.Plazo_fin }}
+                                Presupuesto: {{ pedidotrabajador.fk_Pedido.Presupuesto }}
+                                Informacion adicional: {{ pedidotrabajador.fk_Pedido.Info_adicional }}
+                                <label for="Status">Status: </label>
+                                <select id="Status" name="Status[]">
+                                    <option value="0" selected>{{ pedidotrabajador.fk_Pedido.fk_Status.nombre }}</option>
+                                    <option value="1">Terminada</option>
+                                    <option value="2">En proceso</option>
+                                    <option value="3">Con problemas</option>
+                                    <option value="4">Pendiente</option>
+                                </select><br><br>
 
-                        <input type="hidden" name="idPedido[]" value="{{ pedidotrabajador.fk_Pedido.id_pedido }}">
-                    </li>
+                                <input type="hidden" name="idPedido[]" value="{{ pedidotrabajador.fk_Pedido.id_pedido }}">
+                            </li>
+                        {% endif %}
                 {% endfor %}
             </ul>
             <input type="submit" value="Guardar cambios">

@@ -128,12 +128,13 @@ def AgregarTrabajadores(Request):
 def index(Request):
     return render(Request, 'index.html', {'request': Request})
 
+# Solo el administrador puede ver esta pagina
 @user_passes_test(lambda user: user.is_superuser)
 def VisualizarTrabajadores(Request):
     trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
     return render(Request, 'VisualizarTrabajadores.html', {'trabajadores': trabajadores})
 
-#@user_passes_test(lambda user: user.is_group('Clientes'))
+# Solo los clientes pueden ver esta pagina, es donde el cliente puede hacer pedidos
 @user_passes_test(lambda user: user.groups.filter(name='Clientes').exists())
 def Pedido(request):
     if request.method == 'POST':
@@ -167,11 +168,13 @@ def Pedido(request):
         return render(request, 'index.html', {'request': request})
     return render(request, 'Pedido.html', {'request': request})
 
+# Solo los clientes pueden ver esta pagina, se refiere a los pedidos que ha hecho el cliente
 @user_passes_test(lambda user: user.groups.filter(name='Clientes').exists())
 def Pedidos_del_Usuario(request):
     pedidos = pedidos_.objects.filter(fk_Cliente=request.user.id)
     return render(request, 'Pedidos_del_Usuario.html', {'pedidos': pedidos})
 
+# Solo los trabajadores y administradores pueden ver esta pagina, pero solo los trabajadores pueden tomar pedidos
 @user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists() or user.is_superuser)
 def Pedidos_pendientes(request):
 
@@ -199,10 +202,9 @@ def Pedidos_pendientes(request):
     pedidos = pedidos_.objects.filter(fk_Status=4)
     return render(request, 'Pedidos_pendientes.html', {'pedidos': pedidos})
 
-
+# Solo los trabajadores pueden ver los pedidos que tomaron y cambiar su estado
 @user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists())
 def Pedidos_empleados(request):
-    # El trabajador puede seleccionar pedidos para procesarlos
     if request.method == 'POST':
         pedidos_id = request.POST.getlist('idPedido[]')
         status = request.POST.getlist('Status[]')
