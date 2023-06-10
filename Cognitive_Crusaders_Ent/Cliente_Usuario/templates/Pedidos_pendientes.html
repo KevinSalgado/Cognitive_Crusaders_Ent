@@ -14,7 +14,7 @@
                         <input type="checkbox" name="pedidos_seleccionados" value="{{ pedido.id_pedido }}" disabled>
                     {% endif %}
                     Tipo Pedido: {{ pedido.fk_TipoPedido.nombre }}
-                    Cliente: {{ pedido.fk_Cliente.nombre }}
+                    Cliente: {{ pedido.fk_Cliente.username }}
                     Alcance: {{ pedido.Alcance }}
                     Plazo inicio: {{ pedido.Plazo_inicio }}
                     Plazo fin: {{ pedido.Plazo_fin }}

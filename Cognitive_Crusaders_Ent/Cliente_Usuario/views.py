@@ -202,6 +202,21 @@ def Pedidos_pendientes(request):
 
 @user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists())
 def Pedidos_empleados(request):
+    # El trabajador puede seleccionar pedidos para procesarlos
+    if request.method == 'POST':
+        pedidos_id = request.POST.getlist('idPedido[]')
+        status = request.POST.getlist('Status[]')
+
+        # Cambiamos el estado de los pedidos seleccionados
+        for pedidoid, status in zip(pedidos_id, status):
+            pedido = pedidos_.objects.get(id_pedido=pedidoid)
+            if status == '0':
+                continue
+            pedido.fk_Status = Status.objects.get(id_status=status)
+            pedido.save()
+
+        return render(request, 'index.html', {'request': request})
+
     pedidos = PedidoTrabajador.objects.filter(fk_Trabajador=request.user.id)
     return render(request, 'Pedidos_empleados.html', {'pedidos': pedidos})
 
