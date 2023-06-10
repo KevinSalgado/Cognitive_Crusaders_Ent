@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Pedido</title>
+</head>
+<body>
+    <h1>¿Deseas una consulta gratuita?</h1>
+    <p> Esta sección es para aquellos usuarios que no están familiarizados con el mundo de la ciencia de datos
+        y no sepan con exactitud que es lo que necesitan. En este formulario se le pedirá información básica.
+        Esta consulta es gratuita y no se le cobrará nada por ella, tiene un plazo de 3 días para recibir una respuesta.
+        Esto no es un medio para conseguir trabajo gratis, solo es una asesoría sobre lo que posiblemnte necesite.
+    </p>
+    <form method="POST">
+        {% csrf_token %}
+
+        <label for="info_adicional">Información adicional que quieras dar</label>
+        <textarea id="info_adicional" name="info_adicional" required></textarea><br><br>
+
+        {% comment %} <input type="hidden" id="fk_Cliente_id" name="fk_Cliente_id" value="{{ request.user.id }}"> {% endcomment %}
+        <input type="submit" value="¡Reservar una consulta gratuita!">
+    </form>
+</body>
+</html>

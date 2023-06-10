@@ -22,6 +22,7 @@ from django.utils import timezone
 #     # return HttpResponse(template.render())
 #     return render(Request, 'servicios.html', {'request': Request})
 
+# La manera en que el usuario cierra sesion
 def Salir(Request):
     logout(Request)
     template = loader.get_template("index.html")
@@ -65,6 +66,7 @@ def Register(Request):
     return render(Request, 'registration/register.html', data)
 
 def Login(request):
+    # Condicion que resuelve el login
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -228,6 +230,41 @@ def Pedidos_empleados(request):
 def Monitor_Pedidos(request):
     pedidos = PedidoTrabajador.objects.all()
     return render(request, 'Monitor_Pedidos.html', {'pedidos': pedidos})
+
+# Donde los usuarios pueden solicitar una prueba gratuita
+@user_passes_test(lambda user: user.groups.filter(name='Clientes').exists())
+def Prueba_gratuita(request):
+    if request.method == 'POST':
+        alcance = 'Prueba gratuita'
+        plazo_inicio = timezone.now()
+        plazo_fin = timezone.now() + timezone.timedelta(days=3)
+        presupuesto = 0
+        info_adicional = request.POST.get('info_adicional')
+        fk_Cliente_id = request.user.id
+        fk_TipoPedido_id = 6
+        #fk_status_id = request.POST.get('fk_status_id')
+
+        # Obtener los objetos de las tablas relacionadas
+        cliente = Cliente.objects.get(id_usuario=fk_Cliente_id)
+        pedido = TipoPedido.objects.get(id_tipoPedido=fk_TipoPedido_id)
+        status = Status.objects.get(id_status=4)
+        
+        # Crear un objeto Pedido y guardar los datos
+        pedido_objeto_creado = pedidos_(
+            Alcance=alcance,
+            Plazo_inicio=plazo_inicio,
+            Plazo_fin=plazo_fin,
+            Presupuesto=presupuesto,
+            Info_adicional=info_adicional,
+            fk_Cliente=cliente,
+            fk_TipoPedido=pedido,
+            fk_Status=status
+        )
+        pedido_objeto_creado.save()
+
+        # Redireccionar al inicio
+        return render(request, 'index.html', {'request': request})
+    return render(request, 'Prueba_gratuita.html', {'request': request})
 
 
 

@@ -14,6 +14,7 @@ urlpatterns = [
     path('Pedidos_pendientes/', views.Pedidos_pendientes, name='Pedidos_pendientes'),
     path('Pedidos_empleados/', views.Pedidos_empleados, name='Pedidos_empleados'),
     path('Monitor_Pedidos/', views.Monitor_Pedidos, name='Monitor_Pedidos'),
+    path('Prueba_gratuita/', views.Prueba_gratuita, name='Prueba_gratuita'),
     #path('register/', views.Register, name='signup'),
     # path('index/', views.index, name='index')
 ]
