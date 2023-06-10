@@ -36,30 +36,7 @@
                     </div>
                     <span class="paragraph-m-medium">Inicio</span>
                 </button>
-                <a href="#services" class="home">
-                    <div class="vectors-wrapper">
-                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                    </div>
-                    <span class="paragraph-m-medium">Servicios</span>
-                </a>
-                <button type="button" class="home">
-                    <div class="vectors-wrapper">
-                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                    </div>
-                    <span class="paragraph-m-medium">About us</span>
-                </button>
-                <button type="button" class="home">
-                    <div class="vectors-wrapper">
-                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                    </div>
-                    <span class="paragraph-m-medium">Blog</span>
-                </button>
-                <a href="#footer" class="home">
-                    <div class="vectors-wrapper">
-                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                    </div>
-                    <span class="paragraph-m-medium">Contacto</span>
-                </a>
+                
                 {% if request.user.is_superuser %}
                     <a href="/AgregarTrabajadores" class="home">
                         <div class="vectors-wrapper">
@@ -87,6 +64,30 @@
                             <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                         </div>
                         <span class="paragraph-m-medium">Mis pedidos</span>
+                    </a>
+                    <a href="#services" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Servicios</span>
+                    </a>
+                    <button type="button" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">About us</span>
+                    </button>
+                    <button type="button" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Blog</span>
+                    </button>
+                    <a href="#footer" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Contacto</span>
                     </a>
                 {% endif %}
 
