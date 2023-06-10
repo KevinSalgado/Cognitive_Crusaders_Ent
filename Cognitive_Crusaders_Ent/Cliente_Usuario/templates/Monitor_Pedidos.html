@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Lista de pedidos y los trabajadores que estan a cargo</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            {% if pedido.fk_Pedido.fk_Status.id_status != 1 %}
+                <li>
+                    Tipo Pedido: {{ pedido.fk_Pedido.fk_TipoPedido.nombre }}
+                    Cliente: {{ pedido.fk_Pedido.fk_Cliente.username }}
+                    Plazo inicio: {{ pedido.fk_Pedido.Plazo_inicio }}
+                    Plazo fin: {{ pedido.fk_Pedido.Plazo_fin }}
+                    Status: {{ pedido.fk_Pedido.fk_Status.nombre }}
+                    Trabajador: {{ pedido.fk_Trabajador.username }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -212,6 +212,7 @@ def Pedidos_empleados(request):
         # Cambiamos el estado de los pedidos seleccionados
         for pedidoid, status in zip(pedidos_id, status):
             pedido = pedidos_.objects.get(id_pedido=pedidoid)
+            # 0 es el estado de "No seleccionado", por lo tanto no se cambia el estado y se pasa al siguiente pedido
             if status == '0':
                 continue
             pedido.fk_Status = Status.objects.get(id_status=status)
@@ -221,6 +222,14 @@ def Pedidos_empleados(request):
 
     pedidos = PedidoTrabajador.objects.filter(fk_Trabajador=request.user.id)
     return render(request, 'Pedidos_empleados.html', {'pedidos': pedidos})
+
+# Donde los administradores pueden ver los pedidos y los trabajadores que los tomaron
+@user_passes_test(lambda user: user.is_superuser)
+def Monitor_Pedidos(request):
+    pedidos = PedidoTrabajador.objects.all()
+    return render(request, 'Monitor_Pedidos.html', {'pedidos': pedidos})
+
+
 
 # def procesar_pedidos(request):
 #     if request.method == 'POST':

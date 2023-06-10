@@ -73,6 +73,12 @@
                         </div>
                         <span class="paragraph-m-medium">Ver Trabajadores</span>
                     </a>
+                    <a href="/Monitor_Pedidos" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Monitorear pedidos</span>
+                    </a>
                 {% endif %}
 
                 {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Clientes' %}
@@ -91,6 +97,9 @@
                         </div>
                         <span class="paragraph-m-medium">Pedidos pendientes</span>
                     </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Trabajadores' %}
                     <a href="/Pedidos_empleados" class="home">
                         <div class="vectors-wrapper">
                             <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
