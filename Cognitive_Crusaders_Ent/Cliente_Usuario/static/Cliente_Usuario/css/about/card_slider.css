@@ -181,7 +181,7 @@ section .card .image img {
 .swiper-button-prev {
     opacity: 0.7;
     color: #7d2ae8;
-    transform: all 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 
