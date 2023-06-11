@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/admin.css' %}" type="text/css">
+    <!-- Iconscout CSS -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <title>Admin Dashboard</title>
+</head>
+
+<body>
+    <nav>
+        <div class="logo-name">
+            <div class="logo-image">
+                <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}" alt="cognitive_crusaders_logo">
+            </div>
+
+            <span class="logo_name">Cognitive Crusaders</span>
+        </div>
+
+        <div class="menu-items">
+            <ul class="nav-links">
+                <li>
+                    <a href="#">
+                        <i class="uil uil-estate"></i>
+                        <span class="link-name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="uil uil-copy-landscape"></i>
+                        <span class="link-name">Content</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="uil uil-chart"></i>
+                        <span class="link-name">Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="uil uil-thumbs-up"></i>
+                        <span class="link-name">Like</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="uil uil-comments"></i>
+                        <span class="link-name">Comments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="uil uil-share"></i>
+                        <span class="link-name">Share</span>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="logout-mode">
+                <li>
+                    <a href="#">
+                        <i class="uil uil-signout"></i>
+                        <span class="link-name">Logout</span>
+                    </a>
+                </li>
+                
+                <li class="mode">
+                    <a href="#">
+                        <i class="uil uil-moon"></i>
+                        <span class="link-name">Dark Mode</span>
+                    </a>
+
+                    <div class="mode-toggle">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard">
+        <div class="top">
+            <i class="uil uil-bars sidebar-toggle"></i>
+            
+            <div class="search-box">
+                <i class="uil uil-search"></i>
+                <input type="text" placeholder="Search here...">
+            </div>
+            <img src="{% static 'Cliente_Usuario/images/user-circle.svg' %}" alt="profile">
+        </div>
+
+        <div class="dash-content">
+            <div class="overview">
+                <div class="admin-title">
+                    <i class="uil uil-tachometer-fast-alt"></i>
+                    <span class="admin-text">Dashboard</span>
+                </div>
+
+                <div class="boxes">
+                    <div class="box box1">
+                        <i class="uil uil-thumbs-up"></i>
+                        <span class="admin-text">Total Likes</span>
+                        <span class="number">50,120</span>
+                    </div>
+
+                    <div class="box box2">
+                        <i class="uil uil-comments"></i>
+                        <span class="admin-text">Comments</span>
+                        <span class="number">20,120</span>
+                    </div>
+
+                    <div class="box box3">
+                        <i class="uil uil-share"></i>
+                        <span class="admin-text">Total Share</span>
+                        <span class="number">10,120</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="activity">
+                <div class="admin-title">
+                    <i class="uil uil-clock-three"></i>
+                    <span class="admin-text">Recent Activity</span>
+                </div>
+                
+                <table class="table">
+                    <tr>
+                        <th class="table-row">Name</th>
+                        <th class="table-row">Email</th>
+                        <th class="table-row">Joined</th>
+                        <th class="table-row">Type</th>
+                        <th class="table-row">Status</th>
+                    </tr>
+
+                    <!-- insertar tantas filas como sean necesarias -->
+                    <tr>
+                        <td class="table-row">Eduardo Ruiz</td>
+                        <td class="table-row">eduardo.ruiz.rios09@gmail.com</td>
+                        <td class="table-row">2023-05-09</td>
+                        <td class="table-row">Active</td>
+                        <td class="table-row">Received</td>
+                    </tr>
+                    <tr>
+                        <td class="table-row">Kevin Salgado</td>
+                        <td class="table-row">kevinsg@gmail.com</td>
+                        <td class="table-row">2023-04-10</td>
+                        <td class="table-row">Active</td>
+                        <td class="table-row">Received</td>
+                    </tr>
+                    <tr>
+                        <td class="table-row">Mariana Sosa</td>
+                        <td class="table-row">marianasosa@gmail.com</td>
+                        <td class="table-row">2023-04-15</td>
+                        <td class="table-row">Active</td>
+                        <td class="table-row">Received</td>
+                    </tr>
+                    <tr>
+                        <td class="table-row">Carlos Medrano</td>
+                        <td class="table-row">carlos-david@gmail.com</td>
+                        <td class="table-row">2023-04-20</td>
+                        <td class="table-row">Active</td>
+                        <td class="table-row">Received</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'Cliente_Usuario/js/script.js' %}"></script>
+</body>
+
+</html>
