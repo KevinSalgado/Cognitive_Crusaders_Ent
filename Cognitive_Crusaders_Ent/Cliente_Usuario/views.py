@@ -282,3 +282,9 @@ def Prueba_gratuita(request):
 
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
+
+def team(Request):
+    return render(Request, 'about/team.html', {'request': Request})
+
+def admin(Request):
+    return render(Request, 'admin.html', {'request': Request})

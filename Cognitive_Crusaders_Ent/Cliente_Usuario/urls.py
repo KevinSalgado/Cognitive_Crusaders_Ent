@@ -17,4 +17,6 @@ urlpatterns = [
     path('Prueba_gratuita/', views.Prueba_gratuita, name='Prueba_gratuita'),
     #path('register/', views.Register, name='signup'),
     # path('index/', views.index, name='index')
+    path('team/', views.team, name='Team'),
+    path("admin/", views.admin, name="admin"),
 ]

@@ -36,6 +36,30 @@
                     </div>
                     <span class="paragraph-m-medium">Inicio</span>
                 </button>
+                <a href="#services" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Servicios</span>
+                </a>
+                <a href="{% url 'Team' %}" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">About us</span>
+                </a>
+                <button type="button" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Blog</span>
+                </button>
+                <a href="#footer" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Contacto</span>
+                </a>
                 
                 {% if request.user.is_superuser %}
                     <a href="/AgregarTrabajadores" class="home">
@@ -228,13 +252,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="button-2" onclick="window.location.href='{% url 'Pedido' %}'">
+                                <a href="{% url 'Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
-                                </button>
+                                </a>
                             </div>
 
                             <div class="featured-section-cards-base">
@@ -252,13 +276,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="button-2" onclick="window.location.href='{% url 'Pedido' %}'">
+                                <a href="{% url 'Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
-                                </button>
+                                </a>
                             </div>
 
                             <div class="featured-section-cards-base">
@@ -276,13 +300,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="button-2" onclick="window.location.href='{% url 'Pedido' %}'">
+                                <a href="{% url 'Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
-                                </button>
+                                </a>
                             </div>
                         </div>
 
@@ -515,11 +539,11 @@
                 <div class="links-padding-top">
                     <span class="paragraph-m-regular-3">&copy 2023 Cognitive Crusaders Enterprise - All rights reserved</span>
                     <div class="legal">
-                        <span class="paragraph-m-regular-4">Terms of Service</span>
+                        <a href="#" class="paragraph-m-regular-4">Terms of Service</a>
                         <div class="vectors-wrapper-20">
                             <img src="{% static 'Cliente_Usuario/images/footer/separator.svg' %}" alt="separator">
                         </div>
-                        <span class="paragraph-m-regular-4">Privacy Policy</span>
+                        <a href="#" class="paragraph-m-regular-4">Privacy Policy</a>
                     </div>
                 </div>
             </div>
