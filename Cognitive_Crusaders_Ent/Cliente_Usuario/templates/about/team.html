@@ -1,0 +1,436 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}"
+        type="image/x-icon">
+        <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/styles.css' %}" />
+        <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/hero_section.css' %}" />
+        <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/footer_section.css' %}" />
+        <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/about/team.css' %}" />
+        <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/about/card_slider.css' %}">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- FontAwesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://fonts.googleapis.com/css?family=Spectral' rel='stylesheet' />
+
+    <title>Cognitive Crusaders | Data Science</title>
+</head>
+
+<body>
+    <header class="navigation-desktop">
+        <div class="container">
+            <div class="logo-replace-with-your-own">
+                <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg'%}"
+                    alt="cognitive_crusaders_logo" class="image-1">
+                <span class="text">Cognitive Crusaders</span>
+            </div>
+
+            <div class="navigation">
+                <a href="{% url 'index' %}" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Inicio</span>
+                </a>
+                <a href="{% url 'index' %}" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Servicios</span>
+                </a>
+                <a href="#" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">About us</span>
+                </a>
+                <a href="#" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Blog</span>
+                </a>
+                <a href="#footer" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Contacto</span>
+                </a>
+                {% if request.user.is_superuser %}
+                <a href="/AgregarTrabajadores" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Agregar Trabajadores</span>
+                </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'Salir' %}" class="start-now">
+                    <span class="paragraph-s-semi-bold">Cerrar Sesión {{ request.user.username }}</span>
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
+                    </div>
+                </a>
+                {% else %}
+                <a href="{% url 'Register' %}" class="start-now">
+                    <span class="paragraph-s-semi-bold">Comenzar</span>
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
+                    </div>
+                </a>
+                {% endif %}
+
+
+            </div>
+        </div>
+    </header>
+
+    <div class="title">
+        <span>¡CONOCE AL EQUIPO COGNITIVE CRUSADERS!</span>
+    </div>
+
+    <section>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <img src="{% static 'Cliente_Usuario/images/cognitive_team/kevin_greenpeace.jpg' %}" alt="kevin">
+                        </div>
+
+                        <div class="media-icons">
+                            <a href="https://github.com/KevinSalgado" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/kevin-salgado-g%C3%B3mez-173a96158/" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+
+                        <div class="name-profession">
+                            <span class="name">Kevin Salgado</span>
+                            <span class="profession">CEO & CTO | AI Modelling</span>
+                        </div>
+
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="button-card">
+                            <button class="about-me">About Me</button>
+                            <button class="hire-me">Hire Me</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <img src="{% static 'Cliente_Usuario/images/cognitive_team/wata_greenpeace.jpg' %}" alt="wata">
+                        </div>
+
+                        <div class="media-icons">
+                            <a href="https://github.com/CarlosVelasco210" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/carlos-velasco-medrano-70986a117" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+
+                        <div class="name-profession">
+                            <span class="name">Carlos Velasco</span>
+                            <span class="profession">PhD. AI & Design</span>
+                        </div>
+
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="button-card">
+                            <button class="about-me">About Me</button>
+                            <button class="hire-me">Hire Me</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <img src="{% static 'Cliente_Usuario/images/cognitive_team/mariana.jpg' %}" alt="mariana">
+                        </div>
+
+                        <div class="media-icons">
+                            <a href="https://github.com/MarianaS01" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/mariana-sosa-g/" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+
+                        <div class="name-profession">
+                            <span class="name">Mariana Sosa</span>
+                            <span class="profession">AI Modelling & Data Science</span>
+                        </div>
+
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+
+                        <div class="button-card">
+                            <button class="about-me">About Me</button>
+                            <button class="hire-me">Hire Me</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide card">
+                    <div class="card-content">
+                        <div class="image">
+                            <img src="{% static 'Cliente_Usuario/images/cognitive_team/lalo_cv.jpeg' %}" alt="eduardo">
+                        </div>
+
+                        <div class="media-icons">
+                            <a href="https://github.com/iononi" target="_blank">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/eduardo-ruiz-rios-1975ba228/" target="_blank">
+                                <i class="fa-brands fa-linkedin"></i>
+                            </a>
+                        </div>
+
+                        <div class="name-profession">
+                            <span class="name">Eduardo Ruiz</span>
+                            <span class="profession">PowerBI Data Analyst</span>
+                        </div>
+
+                        <div class="rating-stars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-regular fa-star"></i>
+                        </div>
+
+                        <div class="button-card">
+                            <button class="about-me">About Me</button>
+                            <button class="hire-me">Hire Me</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </section>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            loop: false,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
+    <footer>
+        <div id="footer" class="section-7">
+            <div class="container-9">
+
+                <div class="content-4">
+                    <div class="info-2">
+                        <div class="logo-description">
+                            <div class="logo-replace-with-your-own-2">
+                                <div class="vectors-wrapper-16">
+                                    <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}"
+                                        alt="cognitive_crusaders_logo" class="vectors-wrapper-16" />
+                                </div>
+                                <div class="text-wrap-2">
+                                    <span class="text-head">Cognitive Crusaders</span>
+                                </div>
+                            </div>
+                            <span class="paragraph-m-regular-3">Nos encanta trabajar con personas ambiciosas y
+                                apasionadas. <br>Creemos algo juntos.</span>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/instagram.svg' %}" alt="instagram"
+                                class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/facebook.svg' %}" alt="facebook"
+                                class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/twitter.svg' %}" alt="twitter"
+                                class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/linkedin.svg' %}" alt="linkedin"
+                                class="vectors-wrapper-17">
+                        </div>
+                    </div>
+
+                    <div class="links">
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Producto</span>
+                            <div class="footer-links-column">
+                                <a href="#" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Planes</span>
+                                </a>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Aplicaciones</span>
+                                </button>
+                                <a href="#services" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Servicios</span>
+                                </a>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Reseñas</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Empresa</span>
+                            <div class="footer-links-column">
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">About us</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Blog</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Contacto</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Soporte</span>
+                            <div class="footer-links-column">
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Centro de ayuda</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Reporta un bug</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Chat de soporte</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Contáctanos</span>
+                            <div class="footer-links-column">
+                                <div class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/email.svg' %}" alt="email">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">contact@ccrusaders.ent</span>
+                                </div>
+                                <div class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/phone.svg' %}" alt="phone">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">+1 (500) 300 250</span>
+                                </div>
+                                <div class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/location-gray.svg' %}"
+                                            alt="location">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">3891 Ranchview <br>
+                                        Dr. Richardson, CA 62639</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="links-padding-top">
+                    <span class="paragraph-m-regular-3">&copy 2023 Cognitive Crusaders Enterprise - All rights
+                        reserved</span>
+                    <div class="legal">
+                        <a class="paragraph-m-regular-4">Terms of Service</a>
+                        <div class="vectors-wrapper-20">
+                            <img src="{% static 'Cliente_Usuario/images/footer/separator.svg' %}" alt="separator">
+                        </div>
+                        <a class="paragraph-m-regular-4">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

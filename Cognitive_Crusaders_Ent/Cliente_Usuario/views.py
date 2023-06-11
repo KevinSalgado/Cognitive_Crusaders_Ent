@@ -125,3 +125,6 @@ def index(Request):
 
 # def sing_up(Request):
 #     return render(Request, 'registration/signup.html')
+
+def team(Request):
+    return render(Request, 'about/team.html', {'request': Request})

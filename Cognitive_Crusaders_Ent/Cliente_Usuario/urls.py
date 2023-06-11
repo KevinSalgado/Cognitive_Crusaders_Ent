@@ -10,4 +10,5 @@ urlpatterns = [
     path('login/', views.Login, name='login'),
     #path('register/', views.Register, name='signup'),
     # path('index/', views.index, name='index')
+    path('team/', views.team, name='Team')
 ]

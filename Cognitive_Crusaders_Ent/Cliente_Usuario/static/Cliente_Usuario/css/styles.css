@@ -25,9 +25,13 @@ hr {
 }
 
 footer {
+    width: 100%;
+    height: 100%;
     background-color: #3e3d4d;
 }
 body {
+    display: flex;
+    flex-direction: column;
     margin: 0px 0px;
 }
 
@@ -37,4 +41,14 @@ html {
 
 a {
     text-decoration: none;
+}
+
+a.paragraph-m-regular-4 {
+    text-decoration: none;
+}
+
+
+a.paragraph-m-regular-4:hover {
+    text-decoration: underline;
+    cursor: pointer;
 }
