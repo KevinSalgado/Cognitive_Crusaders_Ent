@@ -128,6 +128,8 @@ def AgregarTrabajadores(Request):
     return render(Request, 'registration/AgregarTrabajadores.html', data)
 
 def index(Request):
+    if Request.user.is_superuser:
+        return render(Request, 'admin.html', {'request': Request})
     return render(Request, 'index.html', {'request': Request})
 
 # Solo el administrador puede ver esta pagina
