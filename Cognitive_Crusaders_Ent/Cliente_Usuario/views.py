@@ -116,8 +116,7 @@ def AgregarTrabajadores(Request):
 
             # Autenticamos al usuario
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
-            #login(Request, user)
-            return render(Request, 'index.html', {'request': Request})
+            return admin(Request)
     else:
         user_creation_form = CustomUserCreationFormExtendedTrabajador()
         
@@ -129,7 +128,8 @@ def AgregarTrabajadores(Request):
 
 def index(Request):
     if Request.user.is_superuser:
-        return render(Request, 'admin.html', {'request': Request})
+        return admin(Request)
+        
     return render(Request, 'index.html', {'request': Request})
 
 # Solo el administrador puede ver esta pagina
@@ -289,4 +289,5 @@ def team(Request):
     return render(Request, 'about/team.html', {'request': Request})
 
 def admin(Request):
-    return render(Request, 'admin.html', {'request': Request})
+    trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
+    return render(Request, 'admin.html', {'trabajadores': trabajadores})

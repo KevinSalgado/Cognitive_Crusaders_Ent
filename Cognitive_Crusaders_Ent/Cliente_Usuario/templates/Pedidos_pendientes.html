@@ -24,7 +24,11 @@
                 </li>
             {% endfor %}
         </ul>
-        <input type="submit" value="Enviar">
+        {% if request.user|user_belongs_to_group:'Trabajadores' %}
+            <input type="submit" value="Enviar">
+        {% else %}
+            <input type="submit" value="Enviar" disabled>
+        {% endif %}
     </form>
 </body>
 </html>
