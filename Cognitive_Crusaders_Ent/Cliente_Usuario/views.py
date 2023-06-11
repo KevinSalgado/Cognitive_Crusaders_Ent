@@ -128,3 +128,6 @@ def index(Request):
 
 def team(Request):
     return render(Request, 'about/team.html', {'request': Request})
+
+def admin(Request):
+    return render(Request, 'admin.html', {'request': Request})
