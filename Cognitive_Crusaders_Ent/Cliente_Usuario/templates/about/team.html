@@ -95,6 +95,15 @@
         </div>
     </header>
 
+    <div class="toggle-button">
+        <a href="{% url 'libreria:graph_index' %}" class="rectangle-1">
+            <span class="paragraph-s-semi-bold-2">Experiencia</span>
+        </a>
+        <a href="#" class="rectangle-2">
+            <span class="paragraph-s-semi-bold-2-light">Equipo</span>
+        </a>
+    </div>
+
     <div class="title">
         <span>¡CONOCE AL EQUIPO COGNITIVE CRUSADERS!</span>
     </div>
@@ -248,27 +257,14 @@
 
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
     </section>
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
     <!-- Initialize Swiper -->
-    <script>
-        var swiper = new Swiper(".mySwiper", {
-            slidesPerView: 3,
-            spaceBetween: 30,
-            loop: false,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-    </script>
+    <script src="{% static 'Cliente_Usuario/js/swiper.js' %}"></script>
 
     <footer>
         <div id="footer" class="section-7">
