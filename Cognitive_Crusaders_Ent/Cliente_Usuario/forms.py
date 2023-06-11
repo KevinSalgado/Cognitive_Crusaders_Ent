@@ -14,3 +14,9 @@ class CustomUserCreationFormExtendedTrabajador(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ('email', 'first_name', 'last_name', 'sueldo', 'especialidad', 'telefono')
+
+class CustomUserCreationFormExtendedCliente(UserCreationForm):
+    telefono = forms.CharField(max_length=50)
+
+    class Meta(UserCreationForm.Meta):
+        fields = UserCreationForm.Meta.fields + ('email', 'first_name', 'last_name', 'telefono')

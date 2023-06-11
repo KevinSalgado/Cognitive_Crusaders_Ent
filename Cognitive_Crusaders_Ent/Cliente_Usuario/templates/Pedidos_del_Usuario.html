@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Lista de pedidos del usuario {{ request.user.username }}</h1>
+    <ul>
+        {% for pedido in pedidos %}
+            <li>Tipo Pedido: {{ pedido.fk_TipoPedido.nombre }}  Alcance: {{pedido.Alcance}}  Plazo incio: {{pedido.Plazo_inicio}}    Plazo fin: {{pedido.Plazo_fin}}   Presupuesto: {{pedido.Presupuesto}}   Informacion adicional: {{pedido.Info_adicional}}   Status: {{pedido.fk_Status.nombre}}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

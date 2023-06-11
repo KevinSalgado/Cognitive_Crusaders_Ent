@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,12 +60,76 @@
                     </div>
                     <span class="paragraph-m-medium">Contacto</span>
                 </a>
+                
                 {% if request.user.is_superuser %}
                     <a href="/AgregarTrabajadores" class="home">
                         <div class="vectors-wrapper">
                             <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                         </div>
                         <span class="paragraph-m-medium">Agregar Trabajadores</span>
+                    </a>
+                    <a href="/VisualizarTrabajadores" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Ver Trabajadores</span>
+                    </a>
+                    <a href="/Monitor_Pedidos" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Monitorear pedidos</span>
+                    </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Clientes' %}
+                    <a href="/Pedidos_del_Usuario" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Mis pedidos</span>
+                    </a>
+                    <a href="#services" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Servicios</span>
+                    </a>
+                    <button type="button" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">About us</span>
+                    </button>
+                    <button type="button" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Blog</span>
+                    </button>
+                    <a href="#footer" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Contacto</span>
+                    </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Trabajadores' or request.user.is_superuser %}
+                    <a href="/Pedidos_pendientes" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Pedidos pendientes</span>
+                    </a>
+                {% endif %}
+
+                {% if request.user.is_authenticated and request.user|user_belongs_to_group:'Trabajadores' %}
+                    <a href="/Pedidos_empleados" class="home">
+                        <div class="vectors-wrapper">
+                            <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                        </div>
+                        <span class="paragraph-m-medium">Mis trabajos</span>
                     </a>
                 {% endif %}
 
@@ -187,13 +252,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="button-2">
+                                <a href="{% url 'Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
-                                </button>
+                                </a>
                             </div>
 
                             <div class="featured-section-cards-base">
@@ -211,13 +276,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="button-2">
+                                <a href="{% url 'Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
-                                </button>
+                                </a>
                             </div>
 
                             <div class="featured-section-cards-base">
@@ -235,13 +300,13 @@
                                     </div>
                                 </div>
 
-                                <button type="button" class="button-2">
+                                <a href="{% url 'Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
                                             alt="arrow-right-blue">
                                     </div>
-                                </button>
+                                </a>
                             </div>
                         </div>
 

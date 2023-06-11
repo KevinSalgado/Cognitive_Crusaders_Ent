@@ -1,0 +1,30 @@
+{% load custom_tags %}
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Lista de pedidos pendientes (sin trabajador que lo haya tomado)</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <ul>
+            {% for pedido in pedidos %}
+                <li>
+                    {% if request.user|user_belongs_to_group:'Trabajadores' %}
+                        <input type="checkbox" name="pedidos_seleccionados" value="{{ pedido.id_pedido }}">
+                    {% else %}
+                        <input type="checkbox" name="pedidos_seleccionados" value="{{ pedido.id_pedido }}" disabled>
+                    {% endif %}
+                    Tipo Pedido: {{ pedido.fk_TipoPedido.nombre }}
+                    Cliente: {{ pedido.fk_Cliente.username }}
+                    Alcance: {{ pedido.Alcance }}
+                    Plazo inicio: {{ pedido.Plazo_inicio }}
+                    Plazo fin: {{ pedido.Plazo_fin }}
+                    Presupuesto: {{ pedido.Presupuesto }}
+                    Informacion adicional: {{ pedido.Info_adicional }}
+                    Status: {{ pedido.fk_Status.nombre }}
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

@@ -25,7 +25,7 @@ class Usuario(models.Model):
 
 
 class Cliente(Usuario):
-    Observaciones = models.CharField(max_length=150)
+    Observaciones = models.CharField(max_length=500)
 
 
 class Administrador(Usuario):
@@ -55,11 +55,11 @@ class Status(models.Model):
 
 class Pedido(models.Model):
     id_pedido = models.BigAutoField(primary_key=True, serialize=True, verbose_name="ID")
-    Alcance = models.CharField(max_length=200)
+    Alcance = models.CharField(max_length=500)
     Plazo_inicio = models.DateField()
     Plazo_fin = models.DateField()
     Presupuesto = models.FloatField()
-    Info_adicional = models.CharField(max_length=50)
+    Info_adicional = models.CharField(max_length=500)
     fk_Status = models.ForeignKey(Status, on_delete=models.CASCADE, null=True)
     fk_Cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=True)
     fk_TipoPedido = models.ForeignKey(TipoPedido, on_delete=models.CASCADE)

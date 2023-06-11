@@ -46,7 +46,16 @@ py manage.py makemigrations
 py manage.py migrate
 ```
 
-6. Para ejecutar el proyecto, colóquese en la carpeta principal del proyecto, y ejecute:
+6. Ejecute en su base de datos los archivos .sql que se encuentran dentro de la carpeta "INSERTS".
+
+7. Ejecute el siguiente comando para crear un superusuario, el cual va a ser necesario para acceder a la página de administración de Django, poder agregar trabajadores, visualizar pedidos, y demás funcionalidades de la aplicación web:
+```
+py manage.py createsuperuser
+```
+
+9. Ejecute los archivos que están en la carpeta "Triggers" en su base de datos, comenzando con el archivo llamado "Function_Copiar_Registro" y después con el archivo llamado "Trigger_copiar_registro".
+
+10. Para ejecutar el proyecto, colóquese en la carpeta principal del proyecto, y ejecute:
 ```
 py manage.py runserver
 ```
