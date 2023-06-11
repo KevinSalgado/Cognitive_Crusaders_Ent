@@ -53,7 +53,9 @@ py manage.py migrate
 py manage.py createsuperuser
 ```
 
-8. Para ejecutar el proyecto, colóquese en la carpeta principal del proyecto, y ejecute:
+9. Ejecute los archivos que están en la carpeta "Triggers" en su base de datos, comenzando con el archivo llamado "Function_Copiar_Registro" y después con el archivo llamado "Trigger_copiar_registro".
+
+10. Para ejecutar el proyecto, colóquese en la carpeta principal del proyecto, y ejecute:
 ```
 py manage.py runserver
 ```
