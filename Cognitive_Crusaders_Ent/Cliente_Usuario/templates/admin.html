@@ -75,7 +75,7 @@
 
             <ul class="logout-mode">
                 <li>
-                    <a href="{% url 'Salir' %}">
+                    <a href="{% url 'Cliente_Usuario:Salir' %}">
                         <i class="uil uil-signout"></i>
                         <span class="link-name">Logout</span>
                     </a>
@@ -167,7 +167,7 @@
                                 <td class="table-row">{{ trabajador.telefono }}</td>
                                 <td class="table-row">{{ trabajador.correo }}</td>
                                 <td class="table-row">
-                                    <form method="post" action="{% url 'admin' %}">
+                                    <form method="post" action="{% url 'Cliente_Usuario:admin' %}">
                                         {% csrf_token %}
                                         <input type="hidden" name="idTrabajador" value="{{ trabajador.id_usuario }}">
                                         <input type="submit" value="Eliminar">
@@ -194,7 +194,7 @@
                             <th class="table-row">Información adicional</th>
                             <th class="table-row">Status</th>
                         </tr>
-                        <form method="post" action="{% url 'admin' %}">
+                        <form method="post" action="{% url 'Cliente_Usuario:admin' %}">
                             {% csrf_token %}
                             <input type="submit" value="Guardar cambios">
                         {% for pedidotrabajador in trabajadores %}

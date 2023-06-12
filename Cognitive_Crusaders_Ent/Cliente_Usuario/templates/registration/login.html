@@ -20,7 +20,7 @@
             <div class="form-content">
                 <header>¡Inicia sesión ahora!</header>
 
-                <form method="post" action="{% url 'login' %}">
+                <form method="post" action="{% url 'Cliente_Usuario:login' %}">
                     {% csrf_token %}
                     <!-- Username input -->
                     <div class="field input-field">
@@ -46,7 +46,7 @@
 
                 <!-- Already have an account? -->
                 <div class="form-link">
-                    <span>¿Aún no tienes cuenta? <a href="{% url 'Register' %}" class="signup-link">Regístrate</a></span>
+                    <span>¿Aún no tienes cuenta? <a href="{% url 'Cliente_Usuario:Register' %}" class="signup-link">Regístrate</a></span>
                 </div>
             </div>
             
