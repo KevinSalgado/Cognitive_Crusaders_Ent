@@ -18,7 +18,7 @@
                 <header>¡Regístrate ahora!</header>
 
 
-                <form method="post" action="{% url 'Register' %}">
+                <form method="post" action="{% url 'Cliente_Usuario:Register' %}">
                     {% csrf_token %}
                     <!-- Email input -->
                     {% for field in form %}

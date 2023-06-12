@@ -42,7 +42,7 @@
                     </div>
                     <span class="paragraph-m-medium">Servicios</span>
                 </a>
-                <a href="{% url 'Team' %}" class="home">
+                <a href="{% url 'Cliente_Usuario:Team' %}" class="home">
                     <div class="vectors-wrapper">
                         <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
                     </div>
@@ -143,14 +143,14 @@
                 {% endif %} {% endcomment %}
 
                 {% if request.user.is_authenticated %}
-                    <a href="{% url 'Salir' %}" class="start-now">
+                    <a href="{% url 'Cliente_Usuario:Salir' %}" class="start-now">
                         <span class="paragraph-s-semi-bold">Cerrar Sesión {{ request.user.username }}</span>
                         <div class="vectors-wrapper">
                             <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
                         </div>
                     </a>
                 {% else %}
-                    <a href="{% url 'Register' %}" class="start-now">
+                    <a href="{% url 'Cliente_Usuario:Register' %}" class="start-now">
                         <span class="paragraph-s-semi-bold">Comenzar</span>
                         <div class="vectors-wrapper">
                             <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
@@ -188,13 +188,13 @@
 
                             <div class="bottom">
                                 <div class="actions">
-                                    <button type="button" class="button">
+                                    <a href="{% url 'Cliente_Usuario:Register' %}" class="button">
                                         <span class="paragraph-s-semi-bold">¡Vamos!</span>
                                         <div class="vectors-wrapper">
                                             <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-light.svg' %}"
                                                 alt="arrow-right">
                                         </div>
-                                    </button>
+                                    </a>
                                 </div>
                                 <div class="rating">
                                     <span class="paragraph-l-regular">Recomendados por nuestros más de 1M de
@@ -261,7 +261,7 @@
                                     </div>
                                 </div>
 
-                                <a href="{% url 'Pedido' %}" class="button-2">
+                                <a href="{% url 'Cliente_Usuario:Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
@@ -285,7 +285,7 @@
                                     </div>
                                 </div>
 
-                                <a href="{% url 'Pedido' %}" class="button-2">
+                                <a href="{% url 'Cliente_Usuario:Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
@@ -309,7 +309,7 @@
                                     </div>
                                 </div>
 
-                                <a href="{% url 'Pedido' %}" class="button-2">
+                                <a href="{% url 'Cliente_Usuario:Pedido' %}" class="button-2">
                                     <span class="paragraph-m-medium-2">Más información</span>
                                     <div class="vectors-wrappers-5">
                                         <img src="{% static 'Cliente_Usuario/images/arrows/arrow-right-blue.svg' %}"
