@@ -136,12 +136,12 @@
             </div>
 
             <div class="activity">
-                <div class="admin-title">
-                    <i class="uil uil-clock-three"></i>
-                    <span class="admin-text">Trabajadores bajo mi mando</span>
-                </div>
 
                 {% if request.user.is_superuser %}
+                    <div class="admin-title">
+                        <i class="uil uil-clock-three"></i>
+                        <span class="admin-text">Trabajadores bajo mi mando</span>
+                    </div>
                     <table class="table">
                         <tr>
                             <th class="table-row">Username</th>
@@ -152,6 +152,7 @@
                             <th class="table-row">Fecha ingreso</th>
                             <th class="table-row">Teléfono</th>
                             <th class="table-row">Correo</th>
+                            <th class="table-row">Eliminar trabajador</th>
                         </tr>
 
                         <!-- insertar tantas filas como sean necesarias -->
@@ -165,10 +166,21 @@
                                 <td class="table-row">{{ trabajador.Fecha_Ingreso }}</td>
                                 <td class="table-row">{{ trabajador.telefono }}</td>
                                 <td class="table-row">{{ trabajador.correo }}</td>
+                                <td class="table-row">
+                                    <form method="post" action="{% url 'admin' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="idTrabajador" value="{{ trabajador.id_usuario }}">
+                                        <input type="submit" value="Eliminar">
+                                    </form>
+                                </td>
                             </tr>
                         {% endfor %}
                     </table>
                 {% else %}
+                    <div class="admin-title">
+                        <i class="uil uil-clock-three"></i>
+                        <span class="admin-text">Mi trabajo</span>
+                    </div>
                     <table class="table">
                         <tr>
                             <th class="table-row">Tipo Pedido</th>

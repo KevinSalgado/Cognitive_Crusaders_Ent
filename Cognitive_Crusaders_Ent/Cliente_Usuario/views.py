@@ -292,8 +292,22 @@ def team(Request):
 # Template donde los usuarios administradores y trabajadores pueden realizar su trabajo
 @user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists() or user.is_superuser)
 def admin(Request):
+    # La funcion funciona de manera diferente dependiendo del tipo de usuario
     if Request.user.is_superuser:
+        # Inicializo la variable trabajadores para que al final de la funcion se pueda retornar corectamente
         trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
+        if Request.method == 'POST':
+            id_trabajador = Request.POST.get('idTrabajador')
+            # Realizar la eliminación del trabajador según su ID
+            Trabajador.objects.filter(id_usuario=id_trabajador).delete()
+
+            # Hacemos lo mismo en la tabla de auth_user
+            User.objects.filter(id=id_trabajador).delete()
+
+            
+            # Retorno la lista de trabajadores actualizada en la misma pagina
+            trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
+            return render(Request, 'admin.html', {'trabajadores': trabajadores})
     else:
         if Request.method == 'POST':
             pedidos_id = Request.POST.getlist('idPedido[]')
@@ -308,6 +322,7 @@ def admin(Request):
                 pedido.fk_Status = Status.objects.get(id_status=status)
                 pedido.save()
 
+            # Retorno la lista de pedidos actualizada en la misma pagina
             pedidostrabajador = PedidoTrabajador.objects.filter(fk_Trabajador=Request.user.id)
             return render(Request, 'admin.html', {'trabajadores': pedidostrabajador})
         trabajadores = PedidoTrabajador.objects.filter(fk_Trabajador=Request.user.id)
