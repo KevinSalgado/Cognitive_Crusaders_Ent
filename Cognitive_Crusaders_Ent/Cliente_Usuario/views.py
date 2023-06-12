@@ -127,7 +127,7 @@ def AgregarTrabajadores(Request):
     return render(Request, 'registration/AgregarTrabajadores.html', data)
 
 def index(Request):
-    if Request.user.is_superuser:
+    if Request.user.is_superuser or Request.user.groups.filter(name='Trabajadores').exists():
         return admin(Request)
         
     return render(Request, 'index.html', {'request': Request})
@@ -192,15 +192,16 @@ def Pedidos_pendientes(request):
             pedido.fk_Status = Status.objects.get(id_status=2)
             pedido.save()
 
-        # Creamos un objeto PedidoTrabajador para cada pedido seleccionado
-        pedido_trabajador = PedidoTrabajador(
-            Fecha_Aceptado=timezone.now(),
-            fk_Pedido=pedido,
-            fk_Trabajador=Trabajador.objects.get(id_usuario=request.user.id)
-        )
-        pedido_trabajador.save()
+            # Creamos un objeto PedidoTrabajador para cada pedido seleccionado
+            pedido_trabajador = PedidoTrabajador(
+                Fecha_Aceptado=timezone.now(),
+                fk_Pedido=pedido,
+                fk_Trabajador=Trabajador.objects.get(id_usuario=request.user.id)
+            )
+            pedido_trabajador.save()
         
-        return render(request, 'index.html', {'request': request})
+        pedidostrabajador = PedidoTrabajador.objects.filter(fk_Trabajador=request.user.id)
+        return render(request, 'admin.html', {'trabajadores': pedidostrabajador})
     
     # Si el usuario es un trabajador se le muestran los pedidos que estan pendientes
     pedidos = pedidos_.objects.filter(fk_Status=4)
@@ -288,6 +289,26 @@ def Prueba_gratuita(request):
 def team(Request):
     return render(Request, 'about/team.html', {'request': Request})
 
+# Template donde los usuarios administradores y trabajadores pueden realizar su trabajo
+@user_passes_test(lambda user: user.groups.filter(name='Trabajadores').exists() or user.is_superuser)
 def admin(Request):
-    trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
+    if Request.user.is_superuser:
+        trabajadores = Trabajador.objects.filter(fk_Administrador=Request.user.id)
+    else:
+        if Request.method == 'POST':
+            pedidos_id = Request.POST.getlist('idPedido[]')
+            status = Request.POST.getlist('Status[]')
+
+            # Cambiamos el estado de los pedidos seleccionados
+            for pedidoid, status in zip(pedidos_id, status):
+                pedido = pedidos_.objects.get(id_pedido=pedidoid)
+                # 0 es el estado de "No seleccionado", por lo tanto no se cambia el estado y se pasa al siguiente pedido
+                if status == '0':
+                    continue
+                pedido.fk_Status = Status.objects.get(id_status=status)
+                pedido.save()
+
+            pedidostrabajador = PedidoTrabajador.objects.filter(fk_Trabajador=Request.user.id)
+            return render(Request, 'admin.html', {'trabajadores': pedidostrabajador})
+        trabajadores = PedidoTrabajador.objects.filter(fk_Trabajador=Request.user.id)
     return render(Request, 'admin.html', {'trabajadores': trabajadores})

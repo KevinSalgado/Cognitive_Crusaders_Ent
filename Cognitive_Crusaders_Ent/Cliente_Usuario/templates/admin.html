@@ -1,4 +1,5 @@
 {% load static %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,24 +32,33 @@
                         <span class="link-name">Dashboard</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/AgregarTrabajadores">
-                        <i class="uil uil-copy-landscape"></i>
-                        <span class="link-name">Agregar trabajadores</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Monitor_Pedidos">
-                        <i class="uil uil-chart"></i>
-                        <span class="link-name">Monitorear pedidos</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="/Pedidos_pendientes">
-                        <i class="uil uil-thumbs-up"></i>
-                        <span class="link-name">Pedidos pendientes</span>
-                    </a>
-                </li>
+                {% if request.user.is_superuser %}
+                    <li>
+                        <a href="/AgregarTrabajadores">
+                            <i class="uil uil-copy-landscape"></i>
+                            <span class="link-name">Agregar trabajadores</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Monitor_Pedidos">
+                            <i class="uil uil-chart"></i>
+                            <span class="link-name">Monitorear pedidos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Pedidos_pendientes">
+                            <i class="uil uil-thumbs-up"></i>
+                            <span class="link-name">Pedidos pendientes</span>
+                        </a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="/Pedidos_pendientes">
+                            <i class="uil uil-copy-landscape"></i>
+                            <span class="link-name">Pedidos pendientes</span>
+                        </a>
+                    </li>
+                {% endif %}
                 <li>
                     <a href="#">
                         <i class="uil uil-comments"></i>
@@ -130,33 +140,81 @@
                     <i class="uil uil-clock-three"></i>
                     <span class="admin-text">Trabajadores bajo mi mando</span>
                 </div>
-                
-                <table class="table">
-                    <tr>
-                        <th class="table-row">Username</th>
-                        <th class="table-row">Nombre</th>
-                        <th class="table-row">Apellido</th>
-                        <th class="table-row">Especialidad</th>
-                        <th class="table-row">Sueldo</th>
-                        <th class="table-row">Fecha ingreso</th>
-                        <th class="table-row">Teléfono</th>
-                        <th class="table-row">Correo</th>
-                    </tr>
 
-                    <!-- insertar tantas filas como sean necesarias -->
-                    {% for trabajador in trabajadores %}
+                {% if request.user.is_superuser %}
+                    <table class="table">
                         <tr>
-                            <td class="table-row">{{ trabajador.username }}</td>
-                            <td class="table-row">{{ trabajador.nombre }}</td>
-                            <td class="table-row">{{ trabajador.apellido }}</td>
-                            <td class="table-row">{{ trabajador.Especialidad }}</td>
-                            <td class="table-row">{{ trabajador.Sueldo }}</td>
-                            <td class="table-row">{{ trabajador.Fecha_Ingreso }}</td>
-                            <td class="table-row">{{ trabajador.telefono }}</td>
-                            <td class="table-row">{{ trabajador.correo }}</td>
+                            <th class="table-row">Username</th>
+                            <th class="table-row">Nombre</th>
+                            <th class="table-row">Apellido</th>
+                            <th class="table-row">Especialidad</th>
+                            <th class="table-row">Sueldo</th>
+                            <th class="table-row">Fecha ingreso</th>
+                            <th class="table-row">Teléfono</th>
+                            <th class="table-row">Correo</th>
                         </tr>
-                    {% endfor %}
-                </table>
+
+                        <!-- insertar tantas filas como sean necesarias -->
+                        {% for trabajador in trabajadores %}
+                            <tr>
+                                <td class="table-row">{{ trabajador.username }}</td>
+                                <td class="table-row">{{ trabajador.nombre }}</td>
+                                <td class="table-row">{{ trabajador.apellido }}</td>
+                                <td class="table-row">{{ trabajador.Especialidad }}</td>
+                                <td class="table-row">{{ trabajador.Sueldo }}</td>
+                                <td class="table-row">{{ trabajador.Fecha_Ingreso }}</td>
+                                <td class="table-row">{{ trabajador.telefono }}</td>
+                                <td class="table-row">{{ trabajador.correo }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <table class="table">
+                        <tr>
+                            <th class="table-row">Tipo Pedido</th>
+                            <th class="table-row">Cliente</th>
+                            <th class="table-row">Teléfono</th>
+                            <th class="table-row">Email</th>
+                            <th class="table-row">Alcance</th>
+                            <th class="table-row">Plazo inicio</th>
+                            <th class="table-row">Plazo fin</th>
+                            <th class="table-row">Presupuesto</th>
+                            <th class="table-row">Información adicional</th>
+                            <th class="table-row">Status</th>
+                        </tr>
+                        <form method="post" action="{% url 'admin' %}">
+                            {% csrf_token %}
+                            <input type="submit" value="Guardar cambios">
+                        {% for pedidotrabajador in trabajadores %}
+                            {% if pedidotrabajador.fk_Pedido.fk_Status.id_status != 1 %}
+                                <tr>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.fk_TipoPedido.nombre }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.fk_Cliente.username }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.fk_Cliente.telefono }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.fk_Cliente.correo }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.Alcance }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.Plazo_inicio }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.Plazo_fin }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.Presupuesto }}</td>
+                                    <td class="table-row">{{ pedidotrabajador.fk_Pedido.Info_adicional }}</td>
+                                    <td class="table-row">
+                                        <select id="Status" name="Status[]">
+                                        <option value="0" selected>{{ pedidotrabajador.fk_Pedido.fk_Status.nombre }}</option>
+                                        <option value="1">Terminada</option>
+                                        <option value="2">En proceso</option>
+                                        <option value="3">Con problemas</option>
+                                        </select>
+                                    </td>
+                                    <input type="hidden" name="idPedido[]" value="{{ pedidotrabajador.fk_Pedido.id_pedido }}">
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </form>
+                    </table>
+                {% endif %}
+
+                
+                
                 </div>
             </div>
         </div>
