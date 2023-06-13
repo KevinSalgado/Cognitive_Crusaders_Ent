@@ -21,7 +21,8 @@ def get_chart(request):
 
     data = Caudal.objects.filter(INF_Label=label, RowKey__date__range=[fecha_inicio, fecha_fin]).values('RowKey', 'INF_Value').order_by('RowKey')
     data2 = transf(label)
-    predic(data2)
+    prediccion = predic(data2)
+    #print(prediccion)
     #print(data2)
     # Resto del código
     #colors = ['blue', 'orange', 'red', 'black', 'yellow', 'green', 'magenta', 'lightblue', 'purple', 'brown']
@@ -36,7 +37,7 @@ def get_chart(request):
         'xAxis':[
             {
                 'type': "category",
-                'data': [d['RowKey'] for d in data]
+                'data': [d['FECHA'] for d in prediccion]
             }
         ],
         'yAxis':[
@@ -46,7 +47,7 @@ def get_chart(request):
         ],
         'series':[
             {
-                'data': [d['INF_Value'] for d in data],
+                'data': [d['DATO'] for d in prediccion],
                 'type':"line",
                 'showSymbol': False,
                 'itemStyle':{
