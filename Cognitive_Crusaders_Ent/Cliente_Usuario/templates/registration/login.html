@@ -20,7 +20,7 @@
             <div class="form-content">
                 <header>¡Inicia sesión ahora!</header>
 
-                <form method="post" action="{% url 'Cliente_Usuario:login' %}">
+                <form method="post" >
                     {% csrf_token %}
                     <!-- Username input -->
                     <div class="field input-field">

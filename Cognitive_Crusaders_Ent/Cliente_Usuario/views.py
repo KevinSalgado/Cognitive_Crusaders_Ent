@@ -62,7 +62,7 @@ def Register(Request):
             # Autenticamos y logeamos al usuario
             user = authenticate(username=user_creation_form.cleaned_data['username'], password=user_creation_form.cleaned_data['password1'])
             login(Request, user)
-            return render(Request, 'index.html', {'request': Request})
+            return index(Request)
     return render(Request, 'registration/register.html', data)
 
 def Login(request):
