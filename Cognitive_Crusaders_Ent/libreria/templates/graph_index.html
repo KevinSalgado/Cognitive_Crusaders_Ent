@@ -18,14 +18,14 @@
             <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/about/team.css' %}" />
 
             <style>
-                .chart {
+                /* .chart {
                     width: 200px;
                     width: 80%; 
                     width: 100vw;
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
-                }
+                } */
             </style>
         </head>
         <body>
@@ -88,14 +88,16 @@
                 </a>
             </div>
 
-            {% comment %}<div class="container">
-                <div class="row my-4">
+            
+
+            <div class="graph-container">
+                <div class="graph-wrapper">
                     <!--<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto">-->
                         <div id="chart" class="chart"></div>
                     <!--</div>-->
                 </div>
             </div>
-            
+
             <!-- Apache Echarts -->
             <script src = "https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
             <!-- Custom JS -->
@@ -117,38 +119,7 @@
             <label for="fecha-fin">Selecciona la fecha de fin:</label>
             <input type="date" id="fecha-fin" name="fecha-fin">
 
-            <button id="update-btn">Actualizar gráfico</button> {% endcomment %}
-
-                <div class="container">
-                    <div class="row my-4">
-                        <!--<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto">-->
-                            <div id="chart" class="chart"></div>
-                        <!--</div>-->
-                    </div>
-                </div>
-    
-                <!-- Apache Echarts -->
-                <script src = "https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
-                <!-- Custom JS -->
-                <script src="{% static 'libreria/js/main.js' %}"></script>
-    
-                <select id="select-label">
-                    <option value="">Seleccione una opción</option>
-                    {% for label in labels %}
-                        <option value="{{ label.INF_Label }}">{{ label.INF_Label }}</option>
-                    {% endfor %}
-                </select>
-    
-                <!-- <label for="fecha">Selecciona una fecha:</label>
-                <input type="date" id="fecha" name="fecha"> -->
-    
-                <label for="fecha-inicio">Selecciona la fecha de inicio:</label>
-                <input type="date" id="fecha-inicio" name="fecha-inicio">
-    
-                <label for="fecha-fin">Selecciona la fecha de fin:</label>
-                <input type="date" id="fecha-fin" name="fecha-fin">
-    
-                <button id="update-btn">Actualizar gráfico</button>
+            <button id="update-btn">Actualizar gráfico</button>
     
             
 
