@@ -13,3 +13,4 @@ class Clima(models.Model):
     temp = models.FloatField(verbose_name='temp')
     visibility = models.FloatField(verbose_name='visibility')
     datetimeStr = models.DateTimeField(verbose_name='datetimeStr')
+    humidity = models.FloatField(verbose_name='humidity')
