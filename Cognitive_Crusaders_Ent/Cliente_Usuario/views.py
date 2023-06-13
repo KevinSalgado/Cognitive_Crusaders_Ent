@@ -9,18 +9,6 @@ from .models import Administrador, Cliente, Trabajador, Rol, Pedido as pedidos_,
 from django.contrib.auth.models import Group, User
 from django.utils import timezone
 
-# ANTIGUO INICIO
-# def Inicio(Request):
-#     return render(Request, 'Inicio.html', {'request': Request})
-#     # template = loader.get_template("Inicio.html")
-#     # return HttpResponse(template.render())
-
-#ANTIGUO SERVICIOS
-# @login_required()
-# def Servicios(Request):
-#     # template = loader.get_template("servicios.html")
-#     # return HttpResponse(template.render())
-#     return render(Request, 'servicios.html', {'request': Request})
 
 # La manera en que el usuario cierra sesion
 def Salir(Request):
@@ -269,22 +257,6 @@ def Prueba_gratuita(request):
         return render(request, 'index.html', {'request': request})
     return render(request, 'Prueba_gratuita.html', {'request': request})
 
-
-
-# def procesar_pedidos(request):
-#     if request.method == 'POST':
-#         pedidos_seleccionados = request.POST.getlist('pedidos_seleccionados')
-
-#         print(pedidos_seleccionados)
-#         # for pedidos in pedidos_seleccionados:
-#         #     pedido = pedidos_.objects.get(id_pedido=pedidos)
-#         #     pedido.fk_Status = Status.objects.get(id_status=5)
-#         #     pedido.save()
-        
-#         return render(request, 'index.html', {'request': request})
-
-# def sing_up(Request):
-#     return render(Request, 'registration/signup.html')
 
 def team(Request):
     return render(Request, 'about/team.html', {'request': Request})
