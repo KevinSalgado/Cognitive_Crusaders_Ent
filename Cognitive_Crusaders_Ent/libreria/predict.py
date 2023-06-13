@@ -89,8 +89,10 @@ def predic(Dataframe):
     print(f"Fechas train : {datos_train.index.min()} --- {datos_train.index.max()}  (n={len(datos_train)})")
     print(f"Fechas test  : {datos_test.index.min()} --- {datos_test.index.max()}  (n={len(datos_test)})")
     print(datos_train)
-    dicc = datos_train.to_dict()
-    #print(dicc)
+    DiccTrain = datos_test.copy()
+    DiccTrain['FECHA'] = DiccTrain.index
+    dicc = DiccTrain.to_dict(orient = 'records')
+    print(dicc)
     return dicc
    # fig, ax = plt.subplots(figsize=(10, 3))
    # datos_train['DATO'].plot(ax=ax, label='train')
@@ -108,90 +110,3 @@ def predic(Dataframe):
     #nombre_modelo = modelo_4.__class__.__name__ 
     #resultados[nombre_modelo] = (pipeline(modelo_4, num_samples_100, X_train, y_train, X_test, y_test))
     #print("Predicción: ", predict(modelo_4, 29.733333, 37.596667, 2022, 6, 13, 0, hora=9, minuto=15)[0])# predecir un día a una hra
-
-
-def predict(modelo, temp, humedad, año, mes, dia, dia_semana, hora=None, minuto=None):
-    """
-    INPUTS:
-    - modelo = modelo entrenado con el que se desea predecir
-    - dia 
-    - mes
-    - año
-    - hora
-    - minuto
-    """
-    #modelo = modelo.fit(X_train, y_train)
-
-    # En caso de tener que completar horas y minutos o solo minutos
-    hrs = list(range(0, 24))
-    mins = list(range(0, 46, 15))
-
-    if hora == None and minuto == None: # DIA MES AÑO
-        # completar las 24hrs 15minutales
-        hrs_mins = list(itertools.product(hrs, mins))
-        df_hrs_mins = pd.DataFrame(hrs_mins, columns=['HORA', 'MINUTO'])
-        
-        X_pred = [[[temp, humedad, año, mes, dia, dia_semana, hora, minuto]] for hora, minuto in hrs_mins]
-        X_pred = np.array(X_pred)
-        X_pred = X_pred.reshape(X_pred.shape[0], -1)
-        
-
-    elif hora != None and minuto == None: # DIA MES AÑO HORA
-        # completar los 15minutales
-        hr_mins = list(itertools.product([hora], mins)) # para el producto hora debe ser lista
-        df_hr_mins = pd.DataFrame(hr_mins, columns=['HORA', 'MINUTO'])
-        
-        X_pred = [[[temp, humedad, año, mes, dia, dia_semana, hora, minuto]] for hora, minuto in hr_mins]
-        X_pred = np.array(X_pred)
-        X_pred = X_pred.reshape(X_pred.shape[0], -1)
-
-
-    else: # DIA MES AÑO HORA MINUTO
-        X_pred = [[temp, humedad, año, mes, dia, dia_semana, hora, minuto]] # predecir
-
-
-    # predict
-    pred = modelo.predict(X_pred)
-
-    return pred    
-
-
-def pipeline(modelo, sample_size, X_train, y_train, X_test, y_test):
-    """
-    INPUTS:
-        + modelo: modelo ML a utilizar
-        + sample_size: tamaño de la muestra que se extraerá del conjunto de training
-        + X_train: set de características para training
-        + y_train: set de targets para training
-        + X_test: set de caracteristicas para testing
-        + y_test: set de targets para testing
-    """
-
-    resultados = {}
-
-    # El tiempo nos va a servir para medir cuánto tarda el modelo en predecir, esto nos serviría también para elegir un modelo que no demore tanto  
-    start = time() # Get start time
-    modelo = modelo.fit(X_train[:], y_train[:])
-    #modelo = modelo.fit(X_train[:sample_size], y_train[:sample_size])
-    end = time() # Get end time
-
-    resultados['tiempo_training'] = end - start
-        
-    # Obtenemos predicciones del set de validación e igual de los primeros 300 datos del set de entrenamiento para obtener su precisión
-    start = time() # Get start time
-    predictions_test = modelo.predict(X_test)
-    predictions_train = modelo.predict(X_train[:300])
-    end = time() # Get end time
-
-    resultados['tiempo_total_pred'] = end - start
-            
-    resultados['MSE_train'] = mean_squared_error(y_train[:300], predictions_train)
-    resultados['MSE_test'] = mean_squared_error(y_test, predictions_test)
-
-    resultados['R2_train'] = r2_score(y_train[:300], predictions_train)
-    resultados['R2_test'] = r2_score(y_test, predictions_test)
-    
-    print("{} entrenado en {} datos.".format(modelo.__class__.__name__, sample_size))
-        
-    # Return the results
-    return resultados    
