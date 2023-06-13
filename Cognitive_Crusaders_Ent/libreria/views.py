@@ -4,6 +4,7 @@ from django.http.response import JsonResponse
 from .models import Caudal
 
 from .predict import transf
+from .predict import predic
 
 def index(request):
 # Obtener los valores únicos de la columna INF_Label
@@ -20,7 +21,8 @@ def get_chart(request):
 
     data = Caudal.objects.filter(INF_Label=label, RowKey__date__range=[fecha_inicio, fecha_fin]).values('RowKey', 'INF_Value').order_by('RowKey')
     data2 = transf(label)
-    print(data2)
+    predic(data2)
+    #print(data2)
     # Resto del código
     #colors = ['blue', 'orange', 'red', 'black', 'yellow', 'green', 'magenta', 'lightblue', 'purple', 'brown']
     #random_color = colors[randrange(0, (len(colors)-1))]
@@ -57,3 +59,4 @@ def get_chart(request):
         ]
     }
     return JsonResponse(chart)
+
