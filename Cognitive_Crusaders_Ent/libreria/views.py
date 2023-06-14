@@ -5,6 +5,7 @@ from .models import Caudal
 
 from .predict import transf
 from .predict import predic
+from .predict import PredictWaterConsume
 
 def index(request):
 # Obtener los valores únicos de la columna INF_Label
@@ -20,9 +21,9 @@ def get_chart(request):
     fecha_fin = request.GET.get('fecha_fin')
 
     data = Caudal.objects.filter(INF_Label=label, RowKey__date__range=[fecha_inicio, fecha_fin]).values('RowKey', 'INF_Value').order_by('RowKey')
+    DatosPre = PredictWaterConsume(label)
     data2 = transf(label)
     prediccion = predic(data2)
-    #print(prediccion)
     #print(data2)
     # Resto del código
     #colors = ['blue', 'orange', 'red', 'black', 'yellow', 'green', 'magenta', 'lightblue', 'purple', 'brown']
@@ -37,7 +38,7 @@ def get_chart(request):
         'xAxis':[
             {
                 'type': "category",
-                'data': [d['FECHA'] for d in prediccion]
+                'data': [d['RowKey'] for d in data]
             }
         ],
         'yAxis':[
@@ -47,7 +48,7 @@ def get_chart(request):
         ],
         'series':[
             {
-                'data': [d['DATO'] for d in prediccion],
+                'data': [d['INF_Value'] for d in data],
                 'type':"line",
                 'showSymbol': False,
                 'itemStyle':{
