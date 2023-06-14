@@ -120,7 +120,7 @@ class PredictWaterConsume(object):
 
     def create_date(self):
         X_prueba = self.df_sector.copy()
-        X_prueba['FECHA'] = X_prueba['AÑO'].astype(str) + "-"+X_prueba['MES'].astype(str) +"-"+ X_prueba['DIA'].astype(str) + " " + X_prueba['HORA_NUMERICA'].astype(str) + ":" + X_prueba['MINUTO_NUMERICO'].astype(str)
+        X_prueba['FECHA'] = X_prueba['ANO'].astype(str) + "-"+X_prueba['MES'].astype(str) +"-"+ X_prueba['DIA'].astype(str) + " " + X_prueba['HORA_NUMERICA'].astype(str) + ":" + X_prueba['MINUTO_NUMERICO'].astype(str)
         X_prueba['FECHA'] = pd.to_datetime(X_prueba['FECHA'])
         df_sector_temphum = X_prueba
         #df_sector_temphum.head()
