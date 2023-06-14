@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Cliente_Usuario.apps.ClienteUsuarioConfig',
     'libreria.apps.LibreriaConfig',
-    'Cliente_Usuario.templatetags.custom_tags'
+    'Cliente_Usuario.templatetags.custom_tags',
+    'django_extensions'
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
