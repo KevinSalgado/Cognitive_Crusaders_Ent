@@ -1,24 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="shortcut icon" href="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}" type="image/x-icon">
-            <link href='https://fonts.googleapis.com/css?family=Spectral' rel='stylesheet' />
-            <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' />
-            <title>Cognitive Crusaders | Data Science</title>
-            <!-- Bootstrap -->
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-            <!-- Custom css-->
-            <link rel="stylesheet" href="{% static 'libreria/css/styles.css' %}"/>
-            <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/hero_section.css' %}">
-            <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/footer_section.css' %}" />
-            <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/about/team.css' %}" />
+<html lang="en">
 
-            <style>
-                /* .chart {
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}"
+        type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Spectral' rel='stylesheet' />
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet' />
+    <title>Cognitive Crusaders | Data Science</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- Custom css-->
+    <link rel="stylesheet" href="{% static 'libreria/css/styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/hero_section.css' %}">
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/footer_section.css' %}" />
+    <link rel="stylesheet" href="{% static 'Cliente_Usuario/css/about/team.css' %}" />
+
+    <style>
+        /* .chart {
                     width: 200px;
                     width: 80%; 
                     width: 100vw;
@@ -26,248 +29,288 @@
                     justify-content: flex-start;
                     align-items: center;
                 } */
-            </style>
-        </head>
-        <body>
-            <header class="navigation-desktop">
-                <div class="container">
-                    <div class="logo-replace-with-your-own">
-                        <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg'%}" alt="cognitive_crusaders_logo"
-                            class="image-1">
-                        <span class="text">Cognitive Crusaders</span>
-                    </div>
-        
-                    <div class="navigation">
-                        <button type="button" class="home">
-                            <div class="vectors-wrapper">
-                                <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                            </div>
-                            <span class="paragraph-m-medium">Inicio</span>
-                        </button>
-                        <a href="{% url 'Cliente_Usuario:index' %}" class="home">
-                            <div class="vectors-wrapper">
-                                <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                            </div>
-                            <span class="paragraph-m-medium">Servicios</span>
-                        </a>
-                        <a href="{% url 'Cliente_Usuario:Team' %}" class="home">
-                            <div class="vectors-wrapper">
-                                <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                            </div>
-                            <span class="paragraph-m-medium">About us</span>
-                        </a>
-                        <button type="button" class="home">
-                            <div class="vectors-wrapper">
-                                <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                            </div>
-                            <span class="paragraph-m-medium">Blog</span>
-                        </button>
-                        <a href="#footer" class="home">
-                            <div class="vectors-wrapper">
-                                <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
-                            </div>
-                            <span class="paragraph-m-medium">Contacto</span>
-                        </a>
+    </style>
+</head>
 
-                        <a href="#" class="start-now">
-                            <span class="paragraph-s-semi-bold">Comenzar</span>
-                            <div class="vectors-wrapper">
-                                <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </header>
-
-            <div class="toggle-button">
-                <a href="#" class="rectangle-1">
-                    <span class="paragraph-s-semi-bold-2">Experiencia</span>
-                </a>
-                <a href="{% url 'Cliente_Usuario:Team' %}" class="rectangle-2">
-                    <span class="paragraph-s-semi-bold-2-light">Equipo</span>
-                </a>
+<body>
+    <header class="navigation-desktop">
+        <div class="container">
+            <div class="logo-replace-with-your-own">
+                <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg'%}"
+                    alt="cognitive_crusaders_logo" class="image-1">
+                <span class="text">Cognitive Crusaders</span>
             </div>
 
-            
+            <div class="navigation">
+                <button type="button" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Inicio</span>
+                </button>
+                <a href="{% url 'Cliente_Usuario:index' %}" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Servicios</span>
+                </a>
+                <a href="{% url 'Cliente_Usuario:Team' %}" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">About us</span>
+                </a>
+                <button type="button" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Blog</span>
+                </button>
+                <a href="#footer" class="home">
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-dark.svg' %}" alt="icon">
+                    </div>
+                    <span class="paragraph-m-medium">Contacto</span>
+                </a>
 
-            <div class="graph-container">
-                <div class="graph-wrapper">
-                    <!--<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto">-->
-                        <div id="chart" class="chart"></div>
-                    <!--</div>-->
-                </div>
+                <a href="#" class="start-now">
+                    <span class="paragraph-s-semi-bold">Comenzar</span>
+                    <div class="vectors-wrapper">
+                        <img src="{% static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="">
+                    </div>
+                </a>
             </div>
+        </div>
+    </header>
 
-            <!-- Apache Echarts -->
-            <script src = "https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
-            <!-- Custom JS -->
-            <script src="{% static 'libreria/js/main.js' %}"></script>
+    <div class="toggle-button">
+        <a href="#" class="rectangle-1">
+            <span class="paragraph-s-semi-bold-2">Experiencia</span>
+        </a>
+        <a href="{% url 'Cliente_Usuario:Team' %}" class="rectangle-2">
+            <span class="paragraph-s-semi-bold-2-light">Equipo</span>
+        </a>
+    </div>
 
+
+
+    <div class="graph-container">
+        <div class="graph-wrapper">
+            <!--<div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mx-auto">-->
+            <div id="chart" class="chart"></div>
+            <!--</div>-->
+        </div>
+    </div>
+
+    <!-- Apache Echarts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.2/echarts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{% static 'libreria/js/main.js' %}"></script>
+
+    <div class="controls">
+
+        <div class="control-widget">
+            <label for="select-label">Seleccione la región</label>
             <select id="select-label">
                 <option value="">Seleccione una opción</option>
                 {% for label in labels %}
-                    <option value="{{ label.INF_Label }}">{{ label.INF_Label }}</option>
+                <option value="{{ label.INF_Label }}">{{ label.INF_Label }}</option>
                 {% endfor %}
             </select>
 
-            <!-- <label for="fecha">Selecciona una fecha:</label>
-            <input type="date" id="fecha" name="fecha"> -->
-
+        </div>
+    
+        <!-- <label for="fecha">Selecciona una fecha:</label>
+                <input type="date" id="fecha" name="fecha"> -->
+        <div class="control-widget">
             <label for="fecha-inicio">Selecciona la fecha de inicio:</label>
             <input type="date" id="fecha-inicio" name="fecha-inicio">
-
+        </div>
+        
+        <div class="control-widget">
             <label for="fecha-fin">Selecciona la fecha de fin:</label>
             <input type="date" id="fecha-fin" name="fecha-fin">
-
-            <button id="update-btn">Actualizar gráfico</button>
+        </div>
     
-            
+    </div>
 
-            <footer>
-                <div id="footer" class="section-7">
-                    <div class="container-9">
-        
-                        <div class="content-4">
-                            <div class="info-2">
-                                <div class="logo-description">
-                                    <div class="logo-replace-with-your-own-2">
-                                        <div class="vectors-wrapper-16">
-                                            <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}"
-                                                alt="cognitive_crusaders_logo" class="vectors-wrapper-16"/>
-                                        </div>
-                                        <div class="text-wrap-2">
-                                            <span class="text-head">Cognitive Crusaders</span>
-                                        </div>
-                                    </div>
-                                    <span class="paragraph-m-regular-3">Nos encanta trabajar con personas ambiciosas y
-                                        apasionadas. <br>Creemos algo juntos.</span>
+    <div class="graph-button">
+        <button id="update-btn" class="cssbuttons-io">
+            <span>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="chart-line">
+                    <path fill="#6563FF"
+                        d="M7,16a1.5,1.5,0,0,0,1.5-1.5.77.77,0,0,0,0-.15l2.79-2.79.23,0,.23,0,1.61,1.61s0,.05,0,.08a1.5,1.5,0,1,0,3,0v-.08L20,9.5h0A1.5,1.5,0,1,0,18.5,8a.77.77,0,0,0,0,.15l-3.61,3.61h-.16L13,10a1.49,1.49,0,0,0-3,0L7,13H7a1.5,1.5,0,0,0,0,3Zm13.5,4H3.5V3a1,1,0,0,0-2,0V21a1,1,0,0,0,1,1h18a1,1,0,0,0,0-2Z">
+                    </path>
+                </svg>
+                Actualizar gráfico
+            </span>
+        </button>
+    </div>
+
+
+
+    <footer>
+        <div id="footer" class="section-7">
+            <div class="container-9">
+
+                <div class="content-4">
+                    <div class="info-2">
+                        <div class="logo-description">
+                            <div class="logo-replace-with-your-own-2">
+                                <div class="vectors-wrapper-16">
+                                    <img src="{% static 'Cliente_Usuario/favicon/cognitive_crusaders_logo.svg' %}"
+                                        alt="cognitive_crusaders_logo" class="vectors-wrapper-16" />
                                 </div>
-        
-                                <div class="social-icon">
-                                    <img src="{% static 'Cliente_Usuario/images/social_icons/instagram.svg' %}" alt="instagram" class="vectors-wrapper-17">
-                                    <img src="{% static 'Cliente_Usuario/images/social_icons/facebook.svg' %}" alt="facebook" class="vectors-wrapper-17">
-                                    <img src="{% static 'Cliente_Usuario/images/social_icons/twitter.svg' %}" alt="twitter" class="vectors-wrapper-17">
-                                    <img src="{% static 'Cliente_Usuario/images/social_icons/linkedin.svg' %}" alt="linkedin" class="vectors-wrapper-17">
+                                <div class="text-wrap-2">
+                                    <span class="text-head">Cognitive Crusaders</span>
                                 </div>
                             </div>
-        
-                            <div class="links">
-                                <div class="footer-links-column">
-                                    <span class="paragraph-l-semi-bold">Producto</span>
-                                    <div class="footer-links-column">
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Planes</span>
-                                        </button>
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Aplicaciones</span>
-                                        </button>
-                                        <a href="#services" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Servicios</span>
-                                        </a>
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Reseñas</span>
-                                        </button>
+                            <span class="paragraph-m-regular-3">Nos encanta trabajar con personas ambiciosas y
+                                apasionadas.Creemos algo juntos.</span>
+                        </div>
+
+                        <div class="social-icon">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/instagram.svg' %}" alt="instagram"
+                                class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/facebook.svg' %}" alt="facebook"
+                                class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/twitter.svg' %}" alt="twitter"
+                                class="vectors-wrapper-17">
+                            <img src="{% static 'Cliente_Usuario/images/social_icons/linkedin.svg' %}" alt="linkedin"
+                                class="vectors-wrapper-17">
+                        </div>
+                    </div>
+
+                    <div class="links">
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Producto</span>
+                            <div class="footer-links-column">
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
                                     </div>
-                                </div>
-                                <div class="footer-links-column">
-                                    <span class="paragraph-l-semi-bold">Empresa</span>
-                                    <div class="footer-links-column">
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">About us</span>
-                                        </button>
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Blog</span>
-                                        </button>
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Contacto</span>
-                                        </button>
+                                    <span class="paragraph-m-medium-light">Planes</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
                                     </div>
-                                </div>
-                                <div class="footer-links-column">
-                                    <span class="paragraph-l-semi-bold">Soporte</span>
-                                    <div class="footer-links-column">
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Centro de ayuda</span>
-                                        </button>
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Reporta un bug</span>
-                                        </button>
-                                        <button type="button" class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}" alt="icon">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">Chat de soporte</span>
-                                        </button>
+                                    <span class="paragraph-m-medium-light">Aplicaciones</span>
+                                </button>
+                                <a href="#services" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
                                     </div>
-                                </div>
-                                <div class="footer-links-column">
-                                    <span class="paragraph-l-semi-bold">Contáctanos</span>
-                                    <div class="footer-links-column">
-                                        <div class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/footer/email.svg' %}" alt="email">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">contact@ccrusaders.ent</span>
-                                        </div>
-                                        <div class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/footer/phone.svg' %}" alt="phone">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">+1 (500) 300 250</span>
-                                        </div>
-                                        <div class="button-4">
-                                            <div class="vectors-wrapper-18">
-                                                <img src="{%  static 'Cliente_Usuario/images/footer/location-gray.svg' %}" alt="location">
-                                            </div>
-                                            <span class="paragraph-m-medium-light">3891 Ranchview <br>
-                                                Dr. Richardson, CA 62639</span>
-                                        </div>
+                                    <span class="paragraph-m-medium-light">Servicios</span>
+                                </a>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
                                     </div>
-                                </div>
+                                    <span class="paragraph-m-medium-light">Reseñas</span>
+                                </button>
                             </div>
                         </div>
-        
-                        <!-- <div class="vectors-wrappers-19"></div> -->
-        
-                        <div class="links-padding-top">
-                            <span class="paragraph-m-regular-3">&copy 2023 Cognitive Crusaders Enterprise - All rights reserved</span>
-                            <div class="legal">
-                                <a href="#" class="paragraph-m-regular-4">Terms of Service</a>
-                                <div class="vectors-wrapper-20">
-                                    <img src="{% static 'Cliente_Usuario/images/footer/separator.svg' %}" alt="separator">
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Empresa</span>
+                            <div class="footer-links-column">
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">About us</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Blog</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Contacto</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Soporte</span>
+                            <div class="footer-links-column">
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Centro de ayuda</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Reporta un bug</span>
+                                </button>
+                                <button type="button" class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/vectors-wrapper-light.svg' %}"
+                                            alt="icon">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">Chat de soporte</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="footer-links-column">
+                            <span class="paragraph-l-semi-bold">Contáctanos</span>
+                            <div class="footer-links-column">
+                                <div class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/email.svg' %}" alt="email">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">contact@ccrusaders.ent</span>
                                 </div>
-                                <a href="#" class="paragraph-m-regular-4">Privacy Policy</a>
+                                <div class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/phone.svg' %}" alt="phone">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">+1 (500) 300 250</span>
+                                </div>
+                                <div class="button-4">
+                                    <div class="vectors-wrapper-18">
+                                        <img src="{%  static 'Cliente_Usuario/images/footer/location-gray.svg' %}"
+                                            alt="location">
+                                    </div>
+                                    <span class="paragraph-m-medium-light">3891 Ranchview
+                                        Dr. Richardson, CA 62639</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </footer>
-        </body>
-    </html>
+
+                <!-- <div class="vectors-wrappers-19"></div> -->
+
+                <div class="links-padding-top">
+                    <span class="paragraph-m-regular-3">&copy 2023 Cognitive Crusaders Enterprise - All rights
+                        reserved</span>
+                    <div class="legal">
+                        <a href="#" class="paragraph-m-regular-4">Terms of Service</a>
+                        <div class="vectors-wrapper-20">
+                            <img src="{% static 'Cliente_Usuario/images/footer/separator.svg' %}" alt="separator">
+                        </div>
+                        <a href="#" class="paragraph-m-regular-4">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
