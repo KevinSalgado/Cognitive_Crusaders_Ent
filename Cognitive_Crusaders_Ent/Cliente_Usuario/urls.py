@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 
 app_name = 'Cliente_Usuario'
-
+# comentario travieso
 urlpatterns = [
     path('', views.index, name='index'), # views.index
     #path('servicios/', views.Servicios, name='Servicios'),
